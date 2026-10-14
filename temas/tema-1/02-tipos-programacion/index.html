@@ -1,0 +1,1279 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="2.º DAM · IES Rafael Alberti · Curso 2026/27">
+      
+      
+      
+        <link rel="canonical" href="https://joselejimenez.github.io/PSP/temas/tema-1/02-tipos-programacion/">
+      
+      
+        <link rel="prev" href="../01-conceptos/">
+      
+      
+        <link rel="next" href="../03-estados/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>2. Concurrente, paralela y distribuida - PSP · Programación de Servicios y Procesos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/psp.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-programacion-concurrente-paralela-y-distribuida" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="PSP · Programación de Servicios y Procesos" class="md-header__button md-logo" aria-label="PSP · Programación de Servicios y Procesos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PSP · Programación de Servicios y Procesos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Concurrente, paralela y distribuida
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/joselejimenez/PSP" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../planificacion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Planificación
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ra-ce/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  RA y criterios
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Tema 1. Multiprocesos
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PSP · Programación de Servicios y Procesos" class="md-nav__button md-logo" aria-label="PSP · Programación de Servicios y Procesos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    PSP · Programación de Servicios y Procesos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/joselejimenez/PSP" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../planificacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planificación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ra-ce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA y criterios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1. Multiprocesos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1. Multiprocesos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-conceptos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Programa, proceso, servicio e hilo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Concurrente, paralela y distribuida
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Concurrente, paralela y distribuida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-punto-de-partida-la-ejecucion-secuencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Punto de partida: la ejecución secuencial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-programacion-concurrente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Programación concurrente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-programacion-paralela" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Programación paralela
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Programación paralela">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tareas-independientes-y-tareas-dependientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tareas independientes y tareas dependientes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-ley-de-amdahl-cuanto-se-puede-ganar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La ley de Amdahl: cuánto se puede ganar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-programacion-distribuida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Programación distribuida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Resumen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-de-repaso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preguntas de repaso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-estados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Estados de un proceso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-planificacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Planificación de la CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-crear-procesos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Crear procesos en Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-comunicar-controlar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Comunicar y controlar procesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boletin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boletín de ejercicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-punto-de-partida-la-ejecucion-secuencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Punto de partida: la ejecución secuencial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-programacion-concurrente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Programación concurrente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-programacion-paralela" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Programación paralela
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Programación paralela">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tareas-independientes-y-tareas-dependientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tareas independientes y tareas dependientes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-ley-de-amdahl-cuanto-se-puede-ganar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La ley de Amdahl: cuánto se puede ganar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-programacion-distribuida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Programación distribuida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Resumen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-de-repaso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preguntas de repaso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="2-programacion-concurrente-paralela-y-distribuida">2. Programación concurrente, paralela y distribuida<a class="headerlink" href="#2-programacion-concurrente-paralela-y-distribuida" title="Permanent link">&para;</a></h1>
+<p>Hay tres formas de conseguir que un sistema haga varias cosas «a la vez». Se diferencian en <strong>cuántos procesadores</strong> hay y <strong>dónde están</strong>.</p>
+<h2 id="21-punto-de-partida-la-ejecucion-secuencial">2.1 Punto de partida: la ejecución secuencial<a class="headerlink" href="#21-punto-de-partida-la-ejecucion-secuencial" title="Permanent link">&para;</a></h2>
+<p>Un programa <strong>secuencial</strong> ejecuta las instrucciones una detrás de otra: no empieza un paso hasta que termina el anterior. Es la forma más sencilla de programar, y la que habéis usado hasta ahora.</p>
+<ul>
+<li><strong>Ventaja:</strong> es fácil de escribir, de entender y de depurar. El resultado siempre es el mismo.</li>
+<li><strong>Inconveniente:</strong> no aprovecha el hardware. Si el ordenador tiene 8 núcleos, el programa usa uno y los otros siete se quedan parados. Mientras espera al disco o a la red, la CPU tampoco hace nada.</li>
+</ul>
+<h2 id="22-programacion-concurrente">2.2 Programación concurrente<a class="headerlink" href="#22-programacion-concurrente" title="Permanent link">&para;</a></h2>
+<p>Hay <strong>concurrencia</strong> cuando varias tareas están <strong>en curso</strong> durante el mismo periodo de tiempo, aunque no se ejecuten exactamente en el mismo instante.</p>
+<p>Imagina <strong>un solo cocinero</strong> que prepara una ensalada y una sopa. Pica un poco de lechuga, se acerca a remover la sopa, vuelve a picar… Los dos platos avanzan, pero en cada instante el cocinero solo hace una cosa. Sin concurrencia, tendría que esperar a que la sopa estuviera hecha para empezar la ensalada.</p>
+<p>En un ordenador con <strong>un solo núcleo</strong>, el sistema operativo hace lo mismo: ejecuta un trozo de un proceso, lo para, ejecuta un trozo de otro, y así continuamente. Los cambios son tan rápidos (milisegundos) que parece que todo se ejecuta a la vez. A esto se le llama <strong>multiprogramación</strong>.</p>
+<div class="gantt">
+<div class="g-titulo">Un núcleo: los procesos se turnan</div>
+<div class="g-fila"><span class="g-etq">Núcleo 1</span><div class="g-pista">
+<div class="g-barra c1" style="left:0.000%;width:16.667%">A</div>
+<div class="g-barra c2" style="left:16.667%;width:16.667%">B</div>
+<div class="g-barra c3" style="left:33.333%;width:16.667%">C</div>
+<div class="g-barra c1" style="left:50.000%;width:16.667%">A</div>
+<div class="g-barra c2" style="left:66.667%;width:16.667%">B</div>
+<div class="g-barra c3" style="left:83.333%;width:16.667%">C</div>
+</div></div>
+<div class="g-eje"><span style="left:0.000%">0</span><span style="left:16.667%">2</span><span style="left:33.333%">4</span><span style="left:50.000%">6</span><span style="left:66.667%">8</span><span style="left:83.333%">10</span><span style="left:100.000%">12</span></div>
+</div>
+
+<p><strong>¿Para qué sirve si no se gana tiempo de CPU?</strong> Para no desperdiciarla mientras se espera. Cuando un proceso pide leer un fichero o espera una respuesta de la red, se queda parado varios milisegundos. En ese tiempo, la CPU puede atender a otro proceso. Además, la concurrencia permite que un programa siga <strong>respondiendo</strong> al usuario mientras hace un trabajo largo.</p>
+<p><strong>Dónde se usa:</strong> sistemas operativos multitarea, servidores que atienden a muchos clientes, interfaces gráficas que no se congelan, videojuegos.</p>
+<h2 id="23-programacion-paralela">2.3 Programación paralela<a class="headerlink" href="#23-programacion-paralela" title="Permanent link">&para;</a></h2>
+<p>Hay <strong>paralelismo</strong> cuando varias tareas se ejecutan <strong>en el mismo instante</strong> en procesadores o núcleos distintos. Volviendo a la cocina: ahora hay <strong>dos cocineros</strong>, uno pica y otro remueve. Ya no hay que alternar.</p>
+<div class="gantt">
+<div class="g-titulo">Tres núcleos: los procesos avanzan a la vez</div>
+<div class="g-fila"><span class="g-etq">Núcleo 1</span><div class="g-pista">
+<div class="g-barra c1" style="left:0.000%;width:50.000%">A</div>
+</div></div>
+<div class="g-fila"><span class="g-etq">Núcleo 2</span><div class="g-pista">
+<div class="g-barra c2" style="left:0.000%;width:50.000%">B</div>
+</div></div>
+<div class="g-fila"><span class="g-etq">Núcleo 3</span><div class="g-pista">
+<div class="g-barra c3" style="left:0.000%;width:50.000%">C</div>
+</div></div>
+<div class="g-eje"><span style="left:0.000%">0</span><span style="left:16.667%">2</span><span style="left:33.333%">4</span><span style="left:50.000%">6</span><span style="left:66.667%">8</span><span style="left:83.333%">10</span><span style="left:100.000%">12</span></div>
+</div>
+
+<ul>
+<li>Requiere <strong>hardware</strong> con varios núcleos o procesadores (<strong>multiprocesamiento</strong>). Hoy casi todos los ordenadores y móviles lo tienen.</li>
+<li>La programación paralela consiste en <strong>dividir un problema</strong> en partes que se puedan calcular a la vez y <strong>combinar</strong> después los resultados.</li>
+<li>Todo programa paralelo es concurrente, pero no al revés: la concurrencia es organizar varias tareas; el paralelismo es tener más manos para hacerlas.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Multitarea no es lo mismo que multinúcleo</p>
+<p><strong>Multitarea</strong> es la capacidad del sistema operativo de tener varias tareas en curso. Existía mucho antes de los procesadores multinúcleo: Windows 95 era multitarea con un solo núcleo. Tener varios núcleos o procesadores se llama <strong>multiprocesamiento</strong>.</p>
+</div>
+<h3 id="tareas-independientes-y-tareas-dependientes">Tareas independientes y tareas dependientes<a class="headerlink" href="#tareas-independientes-y-tareas-dependientes" title="Permanent link">&para;</a></h3>
+<p>No todo problema se puede paralelizar igual de bien.</p>
+<ul>
+<li><strong>Tareas independientes:</strong> cada parte se puede calcular sin saber nada de las demás. Por ejemplo, aplicar un filtro a 1000 fotos, contar los números primos de un rango o lavar cuatro cargas de ropa en cuatro lavadoras. Se dice que son problemas de <strong>paralelismo trivial</strong>: basta con repartir el trabajo.</li>
+<li><strong>Tareas dependientes:</strong> un paso necesita el resultado del anterior. Por ejemplo, calcular la sucesión de Fibonacci o hacer los pasos de una receta en orden. Aquí hay que <strong>sincronizar</strong>: hacer esperar a unas tareas hasta que otras terminen. Eso limita mucho lo que se gana.</li>
+</ul>
+<h3 id="la-ley-de-amdahl-cuanto-se-puede-ganar">La ley de Amdahl: cuánto se puede ganar<a class="headerlink" href="#la-ley-de-amdahl-cuanto-se-puede-ganar" title="Permanent link">&para;</a></h3>
+<p>Casi todos los programas tienen una parte que se puede paralelizar y otra que es <strong>secuencial</strong> por naturaleza: preparar los datos, repartirlos, juntar los resultados. Por mucho que añadamos núcleos, la parte secuencial tarda lo mismo.</p>
+<p>La <strong>ley de Amdahl</strong> calcula la aceleración máxima (<em>speedup</em>) con <strong>n</strong> núcleos si una fracción <strong>p</strong> del programa es paralelizable:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>S(n) = 1 / ( (1 − p) + p / n )
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Un programa tarda 100 s y el 80 % se puede paralelizar (p = 0,8).</p>
+<table>
+<thead>
+<tr>
+<th>Núcleos</th>
+<th>Aceleración</th>
+<th>Tiempo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>100 s</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1 / (0,2 + 0,4) = 1,67</td>
+<td>60 s</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1 / (0,2 + 0,2) = 2,5</td>
+<td>40 s</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1 / (0,2 + 0,1) = 3,33</td>
+<td>30 s</td>
+</tr>
+<tr>
+<td>∞</td>
+<td>1 / 0,2 = <strong>5</strong></td>
+<td>20 s</td>
+</tr>
+</tbody>
+</table>
+<p>Aunque tuviéramos infinitos núcleos, el programa nunca bajaría de 20 s: es lo que tarda su parte secuencial. <strong>Un programa paralelo va tan rápido como su parte secuencial más lenta.</strong> Es lo que pasa en un supermercado: cientos de personas compran a la vez, pero al pagar se forman colas porque hay pocas cajas.</p>
+</div>
+<p>Además, repartir el trabajo tiene un <strong>coste</strong>: crear procesos, enviarles datos y recoger los resultados. Si las tareas son muy pequeñas, ese coste puede ser mayor que lo que se gana.</p>
+<h2 id="24-programacion-distribuida">2.4 Programación distribuida<a class="headerlink" href="#24-programacion-distribuida" title="Permanent link">&para;</a></h2>
+<p>En la <strong>programación distribuida</strong>, el trabajo se reparte entre <strong>varios ordenadores independientes</strong>, conectados por una red, que colaboran como si fueran un único sistema. Cada ordenador tiene su propia memoria y su propio reloj, y solo se comunican <strong>enviándose mensajes</strong>.</p>
+<p>Ejemplos: una aplicación web con el servidor en la nube y el cliente en el móvil, un videojuego en línea, el sistema de pagos de un banco, el entrenamiento de un modelo de inteligencia artificial en cientos de servidores.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ventajas</th>
+<th>Inconvenientes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Paralela</strong> (un equipo, varios núcleos)</td>
+<td>Comunicación muy rápida a través de la memoria; más sencilla de programar</td>
+<td>Limitada a los núcleos de una máquina; si el equipo falla, falla todo</td>
+</tr>
+<tr>
+<td><strong>Distribuida</strong> (varios equipos)</td>
+<td>Escala añadiendo máquinas; tolera fallos (si cae un servidor, otro lo sustituye); los recursos pueden estar en lugares distintos</td>
+<td>La red es lenta y puede fallar; hay que tratar mensajes perdidos o duplicados; es más difícil de programar y depurar</td>
+</tr>
+</tbody>
+</table>
+<p>En la práctica, los sistemas reales <strong>combinan</strong> las tres formas: un servidor web atiende a muchos clientes de forma concurrente, usa varios núcleos en paralelo y forma parte de un sistema distribuido.</p>
+<h2 id="25-resumen">2.5 Resumen<a class="headerlink" href="#25-resumen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Secuencial</th>
+<th>Concurrente</th>
+<th>Paralela</th>
+<th>Distribuida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Procesadores</td>
+<td>1</td>
+<td>1 o más</td>
+<td>Varios en un equipo</td>
+<td>Varios equipos</td>
+</tr>
+<tr>
+<td>Tareas a la vez</td>
+<td>Una</td>
+<td>Varias en curso, alternándose</td>
+<td>Varias en el mismo instante</td>
+<td>Varias en distintas máquinas</td>
+</tr>
+<tr>
+<td>Comunicación</td>
+<td>—</td>
+<td>Memoria compartida o SO</td>
+<td>Memoria compartida o SO</td>
+<td>Mensajes por la red</td>
+</tr>
+<tr>
+<td>Ejemplo</td>
+<td>Un script que procesa un fichero</td>
+<td>Un SO con un núcleo</td>
+<td>Renderizar un vídeo con 8 núcleos</td>
+<td>Una aplicación en la nube</td>
+</tr>
+</tbody>
+</table>
+<h2 id="preguntas-de-repaso">Preguntas de repaso<a class="headerlink" href="#preguntas-de-repaso" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Explica con tus palabras la diferencia entre concurrencia y paralelismo. Usa un ejemplo de la vida diaria.</li>
+<li>Si un ordenador tiene un solo núcleo, ¿puede ejecutar programas concurrentes? ¿Y paralelos?</li>
+<li>¿Por qué la concurrencia mejora el rendimiento aunque haya un solo núcleo, si los procesos esperan al disco o a la red?</li>
+<li>Un programa tiene un 50 % de código paralelizable. ¿Cuál es la aceleración máxima que puede conseguir con infinitos núcleos?</li>
+<li>Indica una ventaja y un inconveniente de la programación distribuida frente a la paralela.</li>
+<li>¿Es lo mismo multitarea que multiprocesamiento? Justifica tu respuesta.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../01-conceptos/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 1. Programa, proceso, servicio e hilo">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                1. Programa, proceso, servicio e hilo
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-estados/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 3. Estados de un proceso">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                3. Estados de un proceso
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

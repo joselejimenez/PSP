@@ -1,0 +1,1574 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="2.º DAM · IES Rafael Alberti · Curso 2026/27">
+      
+      
+      
+        <link rel="canonical" href="https://joselejimenez.github.io/PSP/temas/tema-1/06-comunicar-controlar/">
+      
+      
+        <link rel="prev" href="../05-crear-procesos/">
+      
+      
+        <link rel="next" href="../boletin/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>6. Comunicar y controlar procesos - PSP · Programación de Servicios y Procesos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/psp.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-comunicar-y-controlar-procesos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="PSP · Programación de Servicios y Procesos" class="md-header__button md-logo" aria-label="PSP · Programación de Servicios y Procesos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PSP · Programación de Servicios y Procesos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Comunicar y controlar procesos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/joselejimenez/PSP" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../planificacion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Planificación
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ra-ce/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  RA y criterios
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Tema 1. Multiprocesos
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PSP · Programación de Servicios y Procesos" class="md-nav__button md-logo" aria-label="PSP · Programación de Servicios y Procesos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    PSP · Programación de Servicios y Procesos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/joselejimenez/PSP" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../planificacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planificación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ra-ce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA y criterios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1. Multiprocesos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1. Multiprocesos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-conceptos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Programa, proceso, servicio e hilo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tipos-programacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Concurrente, paralela y distribuida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-estados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Estados de un proceso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-planificacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Planificación de la CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-crear-procesos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Crear procesos en Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Comunicar y controlar procesos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Comunicar y controlar procesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-los-tres-flujos-estandar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Los tres flujos estándar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-leer-la-salida-del-hijo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Leer la salida del hijo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Leer la salida del hijo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#devolver-un-resultado-leyendo-la-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Devolver un resultado leyendo la salida
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-redirigir-en-lugar-de-leer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Redirigir en lugar de leer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-enviar-datos-a-la-entrada-del-hijo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Enviar datos a la entrada del hijo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-invocar-la-shell-del-sistema-con-cuidado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Invocar la shell del sistema, con cuidado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-esperar-con-limite-y-terminar-procesos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Esperar con límite y terminar procesos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-processhandle-observar-cualquier-proceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 ProcessHandle: observar cualquier proceso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-mecanismos-de-comunicacion-entre-procesos-ipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Mecanismos de comunicación entre procesos (IPC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-encadenar-procesos-startpipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 Encadenar procesos: startPipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-resumen-del-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10 Resumen del tema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-de-repaso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preguntas de repaso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boletin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boletín de ejercicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-los-tres-flujos-estandar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Los tres flujos estándar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-leer-la-salida-del-hijo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Leer la salida del hijo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Leer la salida del hijo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#devolver-un-resultado-leyendo-la-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Devolver un resultado leyendo la salida
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-redirigir-en-lugar-de-leer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Redirigir en lugar de leer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-enviar-datos-a-la-entrada-del-hijo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Enviar datos a la entrada del hijo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-invocar-la-shell-del-sistema-con-cuidado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Invocar la shell del sistema, con cuidado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-esperar-con-limite-y-terminar-procesos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Esperar con límite y terminar procesos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-processhandle-observar-cualquier-proceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 ProcessHandle: observar cualquier proceso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-mecanismos-de-comunicacion-entre-procesos-ipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Mecanismos de comunicación entre procesos (IPC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-encadenar-procesos-startpipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 Encadenar procesos: startPipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-resumen-del-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10 Resumen del tema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-de-repaso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preguntas de repaso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="6-comunicar-y-controlar-procesos">6. Comunicar y controlar procesos<a class="headerlink" href="#6-comunicar-y-controlar-procesos" title="Permanent link">&para;</a></h1>
+<p>El código de salida solo permite devolver un número pequeño. En este apartado aprenderás a <strong>intercambiar datos</strong> con un proceso hijo a través de sus flujos, a <strong>esperarlo con límite</strong>, a <strong>terminarlo</strong> y a <strong>observar</strong> cualquier proceso del sistema.</p>
+<h2 id="61-los-tres-flujos-estandar">6.1 Los tres flujos estándar<a class="headerlink" href="#61-los-tres-flujos-estandar" title="Permanent link">&para;</a></h2>
+<p>Todo proceso tiene tres <strong>flujos estándar</strong>:</p>
+<ul>
+<li><strong>stdin</strong> (entrada estándar): de donde lee los datos. Normalmente, el teclado.</li>
+<li><strong>stdout</strong> (salida estándar): donde escribe los resultados. Normalmente, la consola. En Java, <code>System.out</code>.</li>
+<li><strong>stderr</strong> (salida de errores): donde escribe los mensajes de error. En Java, <code>System.err</code>.</li>
+</ul>
+<p>Cuando Java lanza un proceso con <code>ProcessBuilder</code>, <strong>por defecto los tres flujos del hijo se conectan con el padre mediante tuberías</strong>. El padre accede a ellas con estos métodos de <code>Process</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Flujo del hijo</th>
+<th>Método en el padre</th>
+<th>Dirección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stdin</td>
+<td><code>getOutputStream()</code> · <code>outputWriter()</code> (Java 17+)</td>
+<td>padre → hijo</td>
+</tr>
+<tr>
+<td>stdout</td>
+<td><code>getInputStream()</code> · <code>inputReader()</code> (Java 17+)</td>
+<td>hijo → padre</td>
+</tr>
+<tr>
+<td>stderr</td>
+<td><code>getErrorStream()</code> · <code>errorReader()</code> (Java 17+)</td>
+<td>hijo → padre</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">¡Ojo con los nombres!</p>
+<p>Están escritos <strong>desde el punto de vista del padre</strong>. <code>getInputStream()</code> lee la <strong>salida</strong> del hijo (para el padre es una entrada). <code>getOutputStream()</code> escribe en la <strong>entrada</strong> del hijo (para el padre es una salida).</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>          PADRE                                   HIJO
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   outputWriter()   ───── tubería ─────►   stdin   (entrada)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   inputReader()    ◄──── tubería ──────   stdout  (salida)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   errorReader()    ◄──── tubería ──────   stderr  (errores)
+</code></pre></div>
+<p>Una <strong>tubería</strong> (<em>pipe</em>) funciona como un tubo: lo que se mete por un extremo sale por el otro, <strong>en el mismo orden</strong> y en <strong>una sola dirección</strong>. Para hablar en los dos sentidos hacen falta dos tuberías.</p>
+<h2 id="62-leer-la-salida-del-hijo">6.2 Leer la salida del hijo<a class="headerlink" href="#62-leer-la-salida-del-hijo" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.BufferedReader</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.charset.StandardCharsets</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LeerSalida</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"java"</span><span class="p">,</span><span class="w"> </span><span class="s">"-version"</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">pb</span><span class="p">.</span><span class="na">redirectErrorStream</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">                  </span><span class="c1">// mezcla stderr con stdout</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">Process</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">BufferedReader</span><span class="w"> </span><span class="n">br</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">inputReader</span><span class="p">(</span><span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">linea</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">linea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">br</span><span class="p">.</span><span class="na">readLine</span><span class="p">())</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// null = el hijo ha cerrado su salida</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"[hijo] "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">linea</span><span class="p">);</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Código: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">waitFor</span><span class="p">());</span><span class="w"> </span><span class="c1">// esperar DESPUÉS de leer</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><strong><code>redirectErrorStream(true)</code></strong> une la salida de errores con la normal, así basta con leer un flujo. Curiosidad: <code>java -version</code> escribe en <strong>stderr</strong>, así que sin esta línea no leerías nada.</li>
+<li><strong><code>inputReader()</code></strong> devuelve un <code>BufferedReader</code> sobre la salida del hijo. En versiones anteriores a Java 17: <code>new BufferedReader(new InputStreamReader(p.getInputStream()))</code>.</li>
+<li><strong><code>readLine()</code></strong> devuelve <code>null</code> cuando el hijo cierra su salida, normalmente al terminar.</li>
+<li><strong><code>waitFor()</code> va después de leer.</strong> Lo explica el siguiente aviso.</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">El bloqueo por tubería llena</p>
+<p>Las tuberías tienen un <strong>búfer limitado</strong> (unos 64 KB). Si el hijo escribe mucho y el padre no lee, el búfer se llena y el hijo <strong>se bloquea</strong> esperando a que alguien lo vacíe. Si a la vez el padre está esperando en <code>waitFor()</code>, <strong>ninguno de los dos avanza nunca</strong>. Solución: leer la salida <strong>antes</strong> de <code>waitFor()</code> o redirigirla a un fichero.</p>
+</div>
+<h3 id="devolver-un-resultado-leyendo-la-salida">Devolver un resultado leyendo la salida<a class="headerlink" href="#devolver-un-resultado-leyendo-la-salida" title="Permanent link">&para;</a></h3>
+<p>Así, el hijo puede devolver cualquier dato, no solo un número del 0 al 255:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Hijo: escribe el resultado</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// Padre: lo lee</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">String</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">BufferedReader</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">inputReader</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="na">readLine</span><span class="p">();</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="kt">double</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">resultado</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="63-redirigir-en-lugar-de-leer">6.3 Redirigir en lugar de leer<a class="headerlink" href="#63-redirigir-en-lugar-de-leer" title="Permanent link">&para;</a></h2>
+<p>Si no necesitamos procesar la salida en Java, es más sencillo <strong>redirigirla</strong>: el sistema operativo conecta directamente el flujo del hijo con un fichero o con la consola, sin tuberías ni riesgo de bloqueo.</p>
+<table>
+<thead>
+<tr>
+<th>Método de <code>ProcessBuilder</code></th>
+<th>Efecto</th>
+<th>Equivale en la terminal a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>inheritIO()</code></td>
+<td>Los tres flujos van a la consola del padre</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>redirectOutput(new File("f.txt"))</code></td>
+<td>La salida va a un fichero, que se sobrescribe</td>
+<td><code>programa &gt; f.txt</code></td>
+</tr>
+<tr>
+<td><code>redirectOutput(Redirect.appendTo(f))</code></td>
+<td>La salida se añade al final del fichero</td>
+<td><code>programa &gt;&gt; f.txt</code></td>
+</tr>
+<tr>
+<td><code>redirectInput(new File("datos.txt"))</code></td>
+<td>La entrada se lee de un fichero</td>
+<td><code>programa &lt; datos.txt</code></td>
+</tr>
+<tr>
+<td><code>redirectError(Redirect.INHERIT)</code></td>
+<td>Los errores van a la consola del padre</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>redirectOutput(Redirect.DISCARD)</code></td>
+<td>La salida se tira</td>
+<td><code>&gt; /dev/null</code> o <code>&gt; NUL</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"ls"</span><span class="p">,</span><span class="w"> </span><span class="s">"-la"</span><span class="p">);</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">pb</span><span class="p">.</span><span class="na">redirectOutput</span><span class="p">(</span><span class="n">ProcessBuilder</span><span class="p">.</span><span class="na">Redirect</span><span class="p">.</span><span class="na">appendTo</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">"log.txt"</span><span class="p">)));</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">pb</span><span class="p">.</span><span class="na">redirectError</span><span class="p">(</span><span class="n">ProcessBuilder</span><span class="p">.</span><span class="na">Redirect</span><span class="p">.</span><span class="na">INHERIT</span><span class="p">);</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">().</span><span class="na">waitFor</span><span class="p">();</span>
+</code></pre></div>
+<p>Todas las redirecciones se configuran <strong>antes</strong> de llamar a <code>start()</code>.</p>
+<h2 id="64-enviar-datos-a-la-entrada-del-hijo">6.4 Enviar datos a la entrada del hijo<a class="headerlink" href="#64-enviar-datos-a-la-entrada-del-hijo" title="Permanent link">&para;</a></h2>
+<p>El padre puede escribir en la entrada estándar del hijo como si fuera el teclado:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Process</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"sort"</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">BufferedWriter</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">outputWriter</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">w</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="s">"pera\nmanzana\nkiwi\n"</span><span class="p">);</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span><span class="w">                                                  </span><span class="c1">// cerrar = fin de los datos</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">String</span><span class="w"> </span><span class="n">ordenado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getInputStream</span><span class="p">().</span><span class="na">readAllBytes</span><span class="p">());</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">ordenado</span><span class="p">);</span><span class="w">                        </span><span class="c1">// kiwi, manzana, pera</span>
+</code></pre></div>
+<ul>
+<li><code>sort</code> lee líneas hasta el final de la entrada, las ordena y las escribe. Existe en Windows, Linux y macOS.</li>
+<li><strong>Hay que cerrar el flujo.</strong> Al cerrarlo, el hijo recibe el «fin de fichero» y sabe que no llegarán más datos. Si no se cierra, <code>sort</code> sigue esperando, el padre también, y el programa se queda colgado.</li>
+</ul>
+<h2 id="65-invocar-la-shell-del-sistema-con-cuidado">6.5 Invocar la shell del sistema, con cuidado<a class="headerlink" href="#65-invocar-la-shell-del-sistema-con-cuidado" title="Permanent link">&para;</a></h2>
+<p>A veces necesitamos funciones de la shell: tuberías (<code>|</code>), comodines (<code>*</code>) u órdenes internas.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Windows</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"cmd"</span><span class="p">,</span><span class="w"> </span><span class="s">"/c"</span><span class="p">,</span><span class="w"> </span><span class="s">"ipconfig"</span><span class="p">).</span><span class="na">inheritIO</span><span class="p">().</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// Linux y macOS</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"bash"</span><span class="p">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p">,</span><span class="w"> </span><span class="s">"ip a | grep inet"</span><span class="p">).</span><span class="na">inheritIO</span><span class="p">().</span><span class="na">start</span><span class="p">();</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Inyección de órdenes</p>
+<p><strong>Nunca</strong> construyas la orden concatenando lo que escribe el usuario. Con <code>"ping " + host</code>, alguien puede escribir <code>8.8.8.8 &amp; del *</code> y ejecutaría también su orden. Es una de las vulnerabilidades más graves (la veremos en el Tema 5). La defensa: pasar cada dato como un argumento separado de <code>ProcessBuilder</code>, sin shell, y validar la entrada.</p>
+</div>
+<h2 id="66-esperar-con-limite-y-terminar-procesos">6.6 Esperar con límite y terminar procesos<a class="headerlink" href="#66-esperar-con-limite-y-terminar-procesos" title="Permanent link">&para;</a></h2>
+<p>Nunca conviene esperar indefinidamente a un proceso externo: puede colgarse. <code>Process</code> ofrece:</p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>waitFor()</code></td>
+<td>Espera sin límite y devuelve el código de salida.</td>
+</tr>
+<tr>
+<td><code>waitFor(t, TimeUnit)</code></td>
+<td>Espera como mucho ese tiempo. Devuelve <code>true</code> si terminó y <code>false</code> si se agotó el tiempo.</td>
+</tr>
+<tr>
+<td><code>isAlive()</code></td>
+<td><code>true</code> si el hijo sigue en marcha.</td>
+</tr>
+<tr>
+<td><code>exitValue()</code></td>
+<td>El código de salida. Lanza una excepción si el proceso aún no ha terminado.</td>
+</tr>
+<tr>
+<td><code>destroy()</code></td>
+<td>Pide al proceso que termine (en Linux y macOS, la señal <strong>SIGTERM</strong>). El hijo puede guardar sus datos y cerrar ordenadamente.</td>
+</tr>
+<tr>
+<td><code>destroyForcibly()</code></td>
+<td>Lo mata sin avisar (<strong>SIGKILL</strong>). No puede reaccionar.</td>
+</tr>
+<tr>
+<td><code>onExit()</code></td>
+<td>Devuelve un <code>CompletableFuture</code> que se completa cuando termina: permite reaccionar sin bloquearse.</td>
+</tr>
+</tbody>
+</table>
+<p>El patrón recomendado es <strong>pedir por las buenas y, si no responde, forzar</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Process</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">.</span><span class="na">waitFor</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// ¿ha terminado en 5 s?</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="na">destroy</span><span class="p">();</span><span class="w">                              </span><span class="c1">// pide que termine</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">.</span><span class="na">waitFor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">// le da 2 s para cerrar</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="na">destroyForcibly</span><span class="p">();</span><span class="w">                  </span><span class="c1">// último recurso</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Códigos al terminar por una señal</p>
+<p>En Linux y macOS, un proceso terminado por una señal devuelve 128 + el número de la señal: <strong>143</strong> con <code>destroy()</code> (SIGTERM es la 15) y <strong>137</strong> con <code>destroyForcibly()</code> (SIGKILL es la 9). Un programa Java puede ejecutar código al recibir SIGTERM con <code>Runtime.getRuntime().addShutdownHook(...)</code>; con SIGKILL, no. En Windows no hay señales y los dos métodos terminan el proceso directamente.</p>
+</div>
+<p>Los recursos del proceso terminado (memoria, ficheros abiertos) los libera el <strong>sistema operativo</strong>. El recolector de basura de Java solo recoge el objeto <code>Process</code> de nuestra JVM.</p>
+<h2 id="67-processhandle-observar-cualquier-proceso">6.7 <code>ProcessHandle</code>: observar cualquier proceso<a class="headerlink" href="#67-processhandle-observar-cualquier-proceso" title="Permanent link">&para;</a></h2>
+<p>Desde Java 9, <code>ProcessHandle</code> permite ver y controlar <strong>cualquier proceso</strong> del sistema, no solo los que hemos lanzado. Es como un Administrador de tareas desde Java.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">ProcessHandle</span><span class="w"> </span><span class="n">yo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessHandle</span><span class="p">.</span><span class="na">current</span><span class="p">();</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Mi PID: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">yo</span><span class="p">.</span><span class="na">pid</span><span class="p">());</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">yo</span><span class="p">.</span><span class="na">parent</span><span class="p">().</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">padre</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Mi padre: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">padre</span><span class="p">.</span><span class="na">pid</span><span class="p">()));</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">ProcessHandle</span><span class="p">.</span><span class="na">allProcesses</span><span class="p">()</span><span class="w">                                   </span><span class="c1">// todos los del sistema</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">ph</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ph</span><span class="p">.</span><span class="na">info</span><span class="p">().</span><span class="na">command</span><span class="p">().</span><span class="na">isPresent</span><span class="p">())</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="p">.</span><span class="na">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">ph</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ph</span><span class="p">.</span><span class="na">pid</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ph</span><span class="p">.</span><span class="na">info</span><span class="p">().</span><span class="na">command</span><span class="p">().</span><span class="na">get</span><span class="p">()));</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Qué devuelve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current()</code></td>
+<td>Nuestro propio proceso.</td>
+</tr>
+<tr>
+<td><code>parent()</code></td>
+<td>El padre, como <code>Optional</code>, porque puede haber terminado.</td>
+</tr>
+<tr>
+<td><code>children()</code> · <code>descendants()</code></td>
+<td>Los hijos directos · todo el árbol por debajo.</td>
+</tr>
+<tr>
+<td><code>allProcesses()</code></td>
+<td>Un <code>Stream</code> con todos los procesos visibles.</td>
+</tr>
+<tr>
+<td><code>info()</code></td>
+<td><code>command()</code>, <code>arguments()</code>, <code>user()</code>, <code>startInstant()</code> y <code>totalCpuDuration()</code>, todos <code>Optional</code> porque, por permisos, puede que no se puedan leer.</td>
+</tr>
+<tr>
+<td><code>destroy()</code>, <code>isAlive()</code>, <code>onExit()</code></td>
+<td>Igual que en <code>Process</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Para pasar de un <code>Process</code> a su <code>ProcessHandle</code>: <code>p.toHandle()</code>.</p>
+<h2 id="68-mecanismos-de-comunicacion-entre-procesos-ipc">6.8 Mecanismos de comunicación entre procesos (IPC)<a class="headerlink" href="#68-mecanismos-de-comunicacion-entre-procesos-ipc" title="Permanent link">&para;</a></h2>
+<p>Como la memoria de cada proceso está <strong>aislada</strong>, toda comunicación entre procesos pasa por el sistema operativo. Los mecanismos de <strong>IPC</strong> (<em>Inter-Process Communication</em>) más habituales son:</p>
+<table>
+<thead>
+<tr>
+<th>Mecanismo</th>
+<th>Cómo funciona</th>
+<th>En Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tuberías</strong></td>
+<td>Flujo de bytes en una dirección, entre procesos relacionados</td>
+<td>Flujos de <code>Process</code>, <code>startPipeline</code></td>
+</tr>
+<tr>
+<td><strong>Ficheros</strong></td>
+<td>Uno escribe y otro lee. Sencillo, pero hay que saber cuándo ha terminado de escribir el otro.</td>
+<td><code>java.nio.file.Files</code></td>
+</tr>
+<tr>
+<td><strong>Sockets</strong></td>
+<td>Comunicación por red, en el mismo equipo o entre equipos distintos. Es el mecanismo universal.</td>
+<td><code>Socket</code>, <code>ServerSocket</code> (Tema 3)</td>
+</tr>
+<tr>
+<td><strong>Memoria compartida</strong></td>
+<td>Una zona de memoria accesible por varios procesos. Es la más rápida, pero exige sincronizar el acceso.</td>
+<td><code>FileChannel.map</code></td>
+</tr>
+<tr>
+<td><strong>Colas de mensajes</strong></td>
+<td>Los mensajes se guardan en orden y varios procesos pueden escribir y leer.</td>
+<td>Brokers como RabbitMQ o Kafka</td>
+</tr>
+<tr>
+<td><strong>Señales</strong></td>
+<td>Avisos breves del SO: terminar, interrumpir…</td>
+<td><code>destroy()</code>, ganchos de cierre</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Dos imágenes para recordarlo</p>
+<ul>
+<li><strong>Memoria compartida</strong> = la nevera de un piso compartido. Uno deja algo en una balda y avisa; los demás lo cogen de ahí. Es rápido, pero si dos van a por lo mismo a la vez hay conflicto: hay que <strong>sincronizarse</strong> (Tema 2).</li>
+<li><strong>Tubería</strong> = un tubo por el que echas pelotas: entran por un lado y salen por el otro en el mismo orden, en una sola dirección.</li>
+</ul>
+</div>
+<h2 id="69-encadenar-procesos-startpipeline">6.9 Encadenar procesos: <code>startPipeline</code><a class="headerlink" href="#69-encadenar-procesos-startpipeline" title="Permanent link">&para;</a></h2>
+<p><code>ProcessBuilder.startPipeline</code> (Java 9+) crea varios procesos <strong>conectados por tuberías</strong>: la salida de cada uno es la entrada del siguiente, igual que la barra vertical <code>|</code> de la terminal.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Equivale a: ps -e | grep java | wc -l</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">Process</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tuberia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">.</span><span class="na">startPipeline</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"ps"</span><span class="p">,</span><span class="w"> </span><span class="s">"-e"</span><span class="p">),</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"grep"</span><span class="p">,</span><span class="w"> </span><span class="s">"java"</span><span class="p">),</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"wc"</span><span class="p">,</span><span class="w"> </span><span class="s">"-l"</span><span class="p">)));</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">Process</span><span class="w"> </span><span class="n">ultimo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tuberia</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tuberia</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">String</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">ultimo</span><span class="p">.</span><span class="na">getInputStream</span><span class="p">().</span><span class="na">readAllBytes</span><span class="p">()).</span><span class="na">trim</span><span class="p">();</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Procesos java: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>Los datos intermedios los pasa <strong>el sistema operativo</strong>: Java no interviene.</li>
+<li>Solo leemos la salida del <strong>último</strong> proceso.</li>
+<li>Frente a <code>bash -c "ps -e | grep java | wc -l"</code>, no depende de la shell y no hay riesgo de inyección.</li>
+<li>En Windows: <code>new ProcessBuilder("tasklist")</code> y <code>new ProcessBuilder("findstr", "java")</code>.</li>
+</ul>
+<h2 id="610-resumen-del-tema">6.10 Resumen del tema<a class="headerlink" href="#610-resumen-del-tema" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Lo esencial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proceso</td>
+<td>Programa en ejecución, con PID, memoria propia y al menos un hilo.</td>
+</tr>
+<tr>
+<td>Servicio</td>
+<td>Proceso en segundo plano, sin interfaz, que atiende peticiones.</td>
+</tr>
+<tr>
+<td>Concurrencia</td>
+<td>Varias tareas en curso; paralelismo: en el mismo instante.</td>
+</tr>
+<tr>
+<td>Estados</td>
+<td>Nuevo, listo, ejecución, bloqueado y terminado.</td>
+</tr>
+<tr>
+<td>Planificación</td>
+<td>FCFS, SJF, SRTF, prioridades y Round Robin. Cuidado con la inanición.</td>
+</tr>
+<tr>
+<td><code>ProcessBuilder</code></td>
+<td>Comando troceado, <code>directory</code>, <code>environment</code>, redirecciones, <code>start()</code>.</td>
+</tr>
+<tr>
+<td><code>Process</code></td>
+<td><code>pid</code>, <code>waitFor</code> (con límite), <code>exitValue</code>, <code>destroy</code>, flujos.</td>
+</tr>
+<tr>
+<td>Flujos</td>
+<td><code>getInputStream()</code> lee la <strong>salida</strong> del hijo. Leer antes de <code>waitFor()</code> o redirigir.</td>
+</tr>
+<tr>
+<td><code>ProcessHandle</code></td>
+<td>Observar y controlar cualquier proceso del sistema.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="preguntas-de-repaso">Preguntas de repaso<a class="headerlink" href="#preguntas-de-repaso" title="Permanent link">&para;</a></h2>
+<ol>
+<li>¿Con qué método lee el padre la salida estándar del hijo? ¿Por qué el nombre puede confundir?</li>
+<li>Explica por qué un programa puede quedarse bloqueado si llama a <code>waitFor()</code> antes de leer la salida del hijo.</li>
+<li>¿Qué diferencia hay entre <code>redirectOutput(f)</code> y <code>redirectOutput(Redirect.appendTo(f))</code>?</li>
+<li>Al enviar datos a la entrada de un hijo, ¿por qué hay que cerrar el flujo?</li>
+<li>¿Qué diferencia hay entre <code>destroy()</code> y <code>destroyForcibly()</code>? ¿Qué código de salida da cada uno en Linux?</li>
+<li>Escribe con <code>ProcessHandle</code> un fragmento que muestre cuántos hijos tiene tu proceso.</li>
+<li>¿Qué mecanismo de IPC usarías para comunicar dos programas que están en ordenadores distintos?</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../05-crear-procesos/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 5. Crear procesos en Java">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                5. Crear procesos en Java
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../boletin/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Boletín de ejercicios">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Boletín de ejercicios
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

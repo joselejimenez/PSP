@@ -1,0 +1,1605 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="2.º DAM · IES Rafael Alberti · Curso 2026/27">
+      
+      
+      
+        <link rel="canonical" href="https://joselejimenez.github.io/PSP/temas/tema-1/05-crear-procesos/">
+      
+      
+        <link rel="prev" href="../04-planificacion/">
+      
+      
+        <link rel="next" href="../06-comunicar-controlar/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>5. Crear procesos en Java - PSP · Programación de Servicios y Procesos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/psp.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-crear-procesos-en-java" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="PSP · Programación de Servicios y Procesos" class="md-header__button md-logo" aria-label="PSP · Programación de Servicios y Procesos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PSP · Programación de Servicios y Procesos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Crear procesos en Java
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/joselejimenez/PSP" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../planificacion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Planificación
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ra-ce/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  RA y criterios
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Tema 1. Multiprocesos
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PSP · Programación de Servicios y Procesos" class="md-nav__button md-logo" aria-label="PSP · Programación de Servicios y Procesos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    PSP · Programación de Servicios y Procesos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/joselejimenez/PSP" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../planificacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planificación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ra-ce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RA y criterios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1. Multiprocesos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1. Multiprocesos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-conceptos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Programa, proceso, servicio e hilo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tipos-programacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Concurrente, paralela y distribuida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-estados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Estados de un proceso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-planificacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Planificación de la CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Crear procesos en Java
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Crear procesos en Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-punto-de-partida-cada-java-es-un-proceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Punto de partida: cada java es un proceso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-las-dos-clases-processbuilder-y-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Las dos clases: ProcessBuilder y Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-lanzar-un-proceso-y-esperar-a-que-termine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Lanzar un proceso y esperar a que termine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Lanzar un proceso y esperar a que termine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#las-dos-excepciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las dos excepciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-comandos-diferentes-segun-el-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Comandos diferentes según el sistema operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-el-codigo-de-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 El código de salida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-ejecutar-otra-clase-java-como-proceso-el-cocinero-y-el-pinche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Ejecutar otra clase Java como proceso: el cocinero y el pinche
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 Ejecutar otra clase Java como proceso: el cocinero y el pinche">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-hijo-pinche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El hijo: Pinche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-padre-cocinero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El padre: Cocinero
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-abrir-una-pagina-web-desde-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Abrir una página web desde Java
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 Abrir una página web desde Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-proceso-se-ha-lanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué proceso se ha lanzado?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-para-cualquier-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versión para cualquier sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-de-repaso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preguntas de repaso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-comunicar-controlar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Comunicar y controlar procesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boletin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boletín de ejercicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-punto-de-partida-cada-java-es-un-proceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Punto de partida: cada java es un proceso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-las-dos-clases-processbuilder-y-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Las dos clases: ProcessBuilder y Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-lanzar-un-proceso-y-esperar-a-que-termine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Lanzar un proceso y esperar a que termine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Lanzar un proceso y esperar a que termine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#las-dos-excepciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las dos excepciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-comandos-diferentes-segun-el-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Comandos diferentes según el sistema operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-el-codigo-de-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 El código de salida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-ejecutar-otra-clase-java-como-proceso-el-cocinero-y-el-pinche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Ejecutar otra clase Java como proceso: el cocinero y el pinche
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 Ejecutar otra clase Java como proceso: el cocinero y el pinche">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-hijo-pinche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El hijo: Pinche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-padre-cocinero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El padre: Cocinero
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-abrir-una-pagina-web-desde-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Abrir una página web desde Java
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 Abrir una página web desde Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-proceso-se-ha-lanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué proceso se ha lanzado?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-para-cualquier-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versión para cualquier sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-de-repaso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preguntas de repaso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="5-crear-procesos-en-java">5. Crear procesos en Java<a class="headerlink" href="#5-crear-procesos-en-java" title="Permanent link">&para;</a></h1>
+<p>Hasta ahora has lanzado programas desde la terminal o con doble clic. En este apartado aprenderás a hacer que <strong>tu programa Java lance otros procesos</strong>: comandos del sistema, otras clases Java o el navegador.</p>
+<h2 id="51-punto-de-partida-cada-java-es-un-proceso">5.1 Punto de partida: cada <code>java</code> es un proceso<a class="headerlink" href="#51-punto-de-partida-cada-java-es-un-proceso" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HolaMundo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"¡Hola, mundo!"</span><span class="p">);</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>javac<span class="w"> </span>HolaMundo.java<span class="w">     </span><span class="c1"># crea HolaMundo.class: el programa, en disco</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>java<span class="w"> </span>HolaMundo<span class="w">           </span><span class="c1"># el SO crea un proceso: una JVM con su PID que ejecuta el main</span>
+</code></pre></div>
+<ol>
+<li><code>javac</code> genera <code>HolaMundo.class</code>. Es el <strong>programa</strong>: está en disco y no hace nada.</li>
+<li><code>java HolaMundo</code> pide al sistema operativo que cree un <strong>proceso</strong>: arranca una máquina virtual de Java, carga la clase y ejecuta <code>main</code>.</li>
+<li>La terminal es el <strong>padre</strong> y el proceso <code>java</code> es el <strong>hijo</strong>. Cuando <code>main</code> termina, el proceso termina y devuelve un <strong>código de salida</strong>: 0 si todo ha ido bien.</li>
+</ol>
+<p>Lo que hace la terminal, crear un proceso hijo y esperar a que termine, lo puede hacer también <strong>nuestro programa</strong>.</p>
+<h2 id="52-las-dos-clases-processbuilder-y-process">5.2 Las dos clases: <code>ProcessBuilder</code> y <code>Process</code><a class="headerlink" href="#52-las-dos-clases-processbuilder-y-process" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Clase</th>
+<th>Papel</th>
+<th>Métodos principales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ProcessBuilder</code></td>
+<td><strong>Prepara y lanza</strong> el proceso: qué comando, con qué argumentos, en qué carpeta, con qué variables de entorno y adónde van su entrada y su salida.</td>
+<td><code>command()</code>, <code>directory()</code>, <code>environment()</code>, <code>inheritIO()</code>, <code>redirect…()</code>, <strong><code>start()</code></strong></td>
+</tr>
+<tr>
+<td><code>Process</code></td>
+<td><strong>Controla</strong> el proceso ya lanzado. Es como un mando a distancia del hijo.</td>
+<td><code>pid()</code>, <code>waitFor()</code>, <code>exitValue()</code>, <code>isAlive()</code>, <code>destroy()</code>, flujos de entrada y salida</td>
+</tr>
+</tbody>
+</table>
+<p><code>start()</code> es un método de <code>ProcessBuilder</code> y devuelve un objeto <code>Process</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">No uses <code>Runtime.exec(String)</code></p>
+<p>En código antiguo verás <code>Runtime.getRuntime().exec("ping -c 3 8.8.8.8")</code>. Esa versión está <strong>obsoleta desde Java 18</strong>: trocea el texto por los espacios y falla con rutas que los contienen. Usa siempre <code>ProcessBuilder</code>.</p>
+</div>
+<h2 id="53-lanzar-un-proceso-y-esperar-a-que-termine">5.3 Lanzar un proceso y esperar a que termine<a class="headerlink" href="#53-lanzar-un-proceso-y-esperar-a-que-termine" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.File</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EjemploProcessBuilder</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"ping"</span><span class="p">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p">,</span><span class="w"> </span><span class="s">"3"</span><span class="p">,</span><span class="w"> </span><span class="s">"8.8.8.8"</span><span class="p">);</span><span class="w"> </span><span class="c1">// Windows: "-n"</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">            </span><span class="n">pb</span><span class="p">.</span><span class="na">directory</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"user.home"</span><span class="p">)));</span><span class="w">            </span><span class="c1">// carpeta de trabajo</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="n">pb</span><span class="p">.</span><span class="na">environment</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">"MODO"</span><span class="p">,</span><span class="w"> </span><span class="s">"prueba"</span><span class="p">);</span><span class="w">                            </span><span class="c1">// variable de entorno</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="n">pb</span><span class="p">.</span><span class="na">inheritIO</span><span class="p">();</span><span class="w">                                                     </span><span class="c1">// el hijo usa nuestra consola</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">            </span><span class="n">Process</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">();</span><span class="w">                                             </span><span class="c1">// crea el proceso</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"PID del hijo: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">pid</span><span class="p">());</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">waitFor</span><span class="p">();</span><span class="w">                                           </span><span class="c1">// espera a que termine</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Terminó con código "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">codigo</span><span class="p">);</span><span class="w">                 </span><span class="c1">// 0 = todo bien</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Error al lanzar el proceso: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"El proceso fue interrumpido: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">            </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">interrupt</span><span class="p">();</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="p">}</span>
+</code></pre></div>
+<p>Línea a línea:</p>
+<ol>
+<li><strong>El constructor</strong> recibe el comando <strong>troceado</strong>: primero el programa y luego cada argumento como una cadena distinta. Si escribieras <code>new ProcessBuilder("ping -c 3 8.8.8.8")</code>, Java buscaría un programa llamado literalmente «ping -c 3 8.8.8.8» y fallaría.</li>
+<li><strong><code>directory()</code></strong> fija la carpeta de trabajo del hijo. Si no se indica, hereda la del padre.</li>
+<li><strong><code>environment()</code></strong> devuelve un <code>Map</code> con las variables de entorno, heredadas del padre; podemos añadir o quitar.</li>
+<li><strong><code>inheritIO()</code></strong> hace que el hijo escriba en nuestra misma consola. Sin esto, su salida va a una tubería que habría que leer (apartado 6).</li>
+<li><strong><code>start()</code></strong> pide al sistema operativo que cree el proceso y devuelve el objeto <code>Process</code>.</li>
+<li><strong><code>waitFor()</code></strong> <strong>bloquea</strong> al padre hasta que el hijo termina y devuelve su código de salida. Además, recoge al hijo: así no queda zombi.</li>
+</ol>
+<h3 id="las-dos-excepciones">Las dos excepciones<a class="headerlink" href="#las-dos-excepciones" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Excepción</th>
+<th>Cuándo ocurre</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IOException</code></td>
+<td><code>start()</code> no puede crear el proceso: el programa no existe, no está en el <code>PATH</code> o no tiene permisos de ejecución.</td>
+<td>Avisar al usuario con un mensaje claro.</td>
+</tr>
+<tr>
+<td><code>InterruptedException</code></td>
+<td>Otro hilo interrumpe al padre mientras espera en <code>waitFor()</code>.</td>
+<td>Volver a marcar la interrupción con <code>Thread.currentThread().interrupt()</code>, para que quien llame a nuestro código sepa que ocurrió.</td>
+</tr>
+</tbody>
+</table>
+<p>En ejemplos cortos verás a veces <code>throws IOException, InterruptedException</code> en el <code>main</code>, para ahorrar espacio. En un programa real, captúralas.</p>
+<h2 id="54-comandos-diferentes-segun-el-sistema-operativo">5.4 Comandos diferentes según el sistema operativo<a class="headerlink" href="#54-comandos-diferentes-segun-el-sistema-operativo" title="Permanent link">&para;</a></h2>
+<p>Muchos comandos cambian entre sistemas. Para que el programa sea <strong>portable</strong>, se consulta el sistema con <code>System.getProperty("os.name")</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">String</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"os.name"</span><span class="p">).</span><span class="na">toLowerCase</span><span class="p">();</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">windows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">so</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">"win"</span><span class="p">);</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">windows</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"cmd"</span><span class="p">,</span><span class="w"> </span><span class="s">"/c"</span><span class="p">,</span><span class="w"> </span><span class="s">"dir"</span><span class="p">)</span><span class="w">   </span><span class="c1">// dir es una orden interna de cmd</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"ls"</span><span class="p">,</span><span class="w"> </span><span class="s">"-l"</span><span class="p">);</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">pb</span><span class="p">.</span><span class="na">inheritIO</span><span class="p">().</span><span class="na">start</span><span class="p">().</span><span class="na">waitFor</span><span class="p">();</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Windows</th>
+<th>Linux y macOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Listar ficheros</td>
+<td><code>cmd /c dir</code></td>
+<td><code>ls -l</code></td>
+</tr>
+<tr>
+<td>Ping de 3 paquetes</td>
+<td><code>ping -n 3 host</code></td>
+<td><code>ping -c 3 host</code></td>
+</tr>
+<tr>
+<td>Ver la configuración de red</td>
+<td><code>ipconfig</code></td>
+<td><code>ip a</code> (Linux), <code>ifconfig</code> (macOS)</td>
+</tr>
+<tr>
+<td>Abrir una URL o un fichero</td>
+<td><code>cmd /c start "" url</code></td>
+<td><code>xdg-open url</code> (Linux), <code>open url</code> (macOS)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">¿Por qué <code>cmd /c</code>?</p>
+<p><code>dir</code>, <code>start</code>, <code>cd</code> o <code>echo</code> no son programas <code>.exe</code>, sino <strong>órdenes internas</strong> del intérprete <code>cmd</code>. Para ejecutarlas hay que lanzar <code>cmd</code> y pasarle la orden con <code>/c</code> («ejecuta esto y termina»). En Linux ocurre algo parecido con <code>bash -c "orden"</code>.</p>
+</div>
+<h2 id="55-el-codigo-de-salida">5.5 El código de salida<a class="headerlink" href="#55-el-codigo-de-salida" title="Permanent link">&para;</a></h2>
+<p>Por convenio, un proceso termina con:</p>
+<ul>
+<li><strong>0</strong> si todo ha ido bien.</li>
+<li><strong>Cualquier otro valor</strong> si ha habido un error. Cada programa decide el significado de cada número.</li>
+</ul>
+<p>En Java, un programa elige su código de salida con <strong><code>System.exit(n)</code></strong>. Si el <code>main</code> termina normalmente, el código es 0. Si termina por una excepción no capturada, es 1.</p>
+<p>El padre lo recibe como resultado de <code>waitFor()</code>, o después con <code>exitValue()</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>El código de salida solo sirve para <strong>números pequeños</strong>: de 0 a 255 en Linux y macOS. Para devolver datos de verdad (un texto, un número grande, una lista), el hijo los <strong>escribe</strong> en su salida y el padre los <strong>lee</strong> (apartado 6).</p>
+</div>
+<h2 id="56-ejecutar-otra-clase-java-como-proceso-el-cocinero-y-el-pinche">5.6 Ejecutar otra clase Java como proceso: el cocinero y el pinche<a class="headerlink" href="#56-ejecutar-otra-clase-java-como-proceso-el-cocinero-y-el-pinche" title="Permanent link">&para;</a></h2>
+<p>Para ejecutar código nuestro en un proceso independiente, lanzamos <strong>otra máquina virtual de Java</strong> con esa clase como programa principal.</p>
+<p>El ejemplo: un <strong>cocinero</strong> (proceso padre) encarga a un <strong>pinche</strong> (proceso hijo) que mezcle dos ingredientes y le diga si la mezcla cabe en la olla, que admite 1000 g. El pinche recibe las cantidades <strong>por argumentos</strong> y responde con su <strong>código de salida</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Cocinero (padre)                                  Pinche (hijo)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>      │                                                │
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>      │── start(): java -cp … Pinche 300 400 ────────►│
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>      │                                                │  suma 300 + 400 = 700 g
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>      │   waitFor(): el cocinero espera                │
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>      │◄──────────────────── System.exit(0) ───────────│
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>      │                                                ✕  el pinche termina
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>      │  interpreta el código: 0 = cabe, 1 = se pasa
+</code></pre></div>
+<h3 id="el-hijo-pinche">El hijo: <code>Pinche</code><a class="headerlink" href="#el-hijo-pinche" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Pinche</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">CAPACIDAD_OLLA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w">   </span><span class="c1">// gramos</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">ing1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w">   </span><span class="c1">// los argumentos llegan como texto</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">ing2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ing1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ing2</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Pinche (PID "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ProcessHandle</span><span class="p">.</span><span class="na">current</span><span class="p">().</span><span class="na">pid</span><span class="p">()</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="s">"): mezclo "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ing1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"g + "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ing2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"g = "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"g"</span><span class="p">);</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="c1">// Devolvemos el resultado al padre con el código de salida</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">CAPACIDAD_OLLA</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="el-padre-cocinero">El padre: <code>Cocinero</code><a class="headerlink" href="#el-padre-cocinero" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cocinero</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="n">mandarTareaAlPinche</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">);</span><span class="w">    </span><span class="c1">// 700 g: cabe</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="n">mandarTareaAlPinche</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span><span class="w">    </span><span class="c1">// 1200 g: se pasa</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">mandarTareaAlPinche</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ing1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ing2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">            </span><span class="c1">// El classpath dice a la nueva JVM dónde están nuestras clases compiladas</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"java.class.path"</span><span class="p">);</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">            </span><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">                    </span><span class="s">"java"</span><span class="p">,</span><span class="w"> </span><span class="s">"-cp"</span><span class="p">,</span><span class="w"> </span><span class="n">cp</span><span class="p">,</span><span class="w"> </span><span class="s">"Pinche"</span><span class="p">,</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">                    </span><span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">ing1</span><span class="p">),</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">ing2</span><span class="p">));</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">            </span><span class="n">pb</span><span class="p">.</span><span class="na">inheritIO</span><span class="p">();</span><span class="w">                                 </span><span class="c1">// para ver lo que dice el pinche</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Cocinero: Le pido al pinche que mezcle "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ing1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"g y "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ing2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"g..."</span><span class="p">);</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">            </span><span class="n">Process</span><span class="w"> </span><span class="n">procesoPinche</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">codigoSalida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">procesoPinche</span><span class="p">.</span><span class="na">waitFor</span><span class="p">();</span><span class="w">     </span><span class="c1">// el cocinero espera al pinche</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">codigoSalida</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Cocinero: Perfectas noticias, la mezcla CABE en la olla.\n"</span><span class="p">);</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">codigoSalida</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Cocinero: ¡Atención! La mezcla SE PASA de la capacidad de la olla.\n"</span><span class="p">);</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida real:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Cocinero: Le pido al pinche que mezcle 300g y 400g...
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Pinche (PID 708): mezclo 300g + 400g = 700g
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Cocinero: Perfectas noticias, la mezcla CABE en la olla.
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Cocinero: Le pido al pinche que mezcle 700g y 500g...
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>Pinche (PID 727): mezclo 700g + 500g = 1200g
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>Cocinero: ¡Atención! La mezcla SE PASA de la capacidad de la olla.
+</code></pre></div>
+<p>Fíjate en que:</p>
+<ul>
+<li>Cada pinche tiene un <strong>PID distinto</strong>: son dos procesos de verdad, dos JVM independientes.</li>
+<li>Los datos <strong>bajan</strong> del padre al hijo como <strong>argumentos</strong> del <code>main</code>, siempre como <code>String</code>. Por eso se usan <code>String.valueOf</code> en el padre e <code>Integer.parseInt</code> en el hijo.</li>
+<li>La respuesta <strong>sube</strong> del hijo al padre como <strong>código de salida</strong>, con <code>System.exit</code>. Un <code>return</code> en el <code>main</code> devolvería siempre 0.</li>
+<li>Hay que compilar <strong>las dos clases</strong> (<code>javac *.java</code>). Si falta <code>Pinche.class</code>, el hijo falla con «Could not find or load main class Pinche».</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Usar la misma JVM que el padre</p>
+<p>En lugar de <code>"java"</code> a secas, se puede usar la ruta de la JVM que está ejecutando el padre. Así funciona aunque <code>java</code> no esté en el <code>PATH</code> o haya varias versiones instaladas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">String</span><span class="w"> </span><span class="n">java</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"java.home"</span><span class="p">),</span><span class="w"> </span><span class="s">"bin"</span><span class="p">,</span><span class="w"> </span><span class="s">"java"</span><span class="p">).</span><span class="na">toString</span><span class="p">();</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">¿Procesos o hilos?</p>
+<p>Arrancar una JVM entera cuesta decenas de megas de memoria y unas décimas de segundo. Si solo queremos hacer algo en paralelo dentro de nuestro programa, es mucho más barato un hilo (Tema 2). Se usan procesos cuando queremos <strong>aislamiento</strong>: si el pinche falla, el cocinero sigue funcionando.</p>
+</div>
+<h2 id="57-abrir-una-pagina-web-desde-java">5.7 Abrir una página web desde Java<a class="headerlink" href="#57-abrir-una-pagina-web-desde-java" title="Permanent link">&para;</a></h2>
+<p>Para abrir una web no programamos un navegador: le pedimos al sistema operativo que abra la URL con el <strong>navegador predeterminado</strong>. Y eso se hace lanzando un proceso.</p>
+<p>En macOS, el comando es <code>open</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AbrirWeb</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"https://www.sevillafc.es/"</span><span class="p">;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">            </span><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"open"</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">);</span><span class="w">   </span><span class="c1">// macOS</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">            </span><span class="n">pb</span><span class="p">.</span><span class="na">inheritIO</span><span class="p">();</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">            </span><span class="n">Process</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Abriendo la web "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" ... (PID: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">pid</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">")"</span><span class="p">);</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">waitFor</span><span class="p">();</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Proceso finalizado con código: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">codigo</span><span class="p">);</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Ocurrió un error al intentar abrir el navegador:"</span><span class="p">);</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="que-proceso-se-ha-lanzado">¿Qué proceso se ha lanzado?<a class="headerlink" href="#que-proceso-se-ha-lanzado" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Java lanza <strong><code>open</code></strong>: ese es nuestro proceso hijo, y su PID es el que se imprime.</li>
+<li><code>open</code> consulta cuál es el navegador predeterminado y le pide que abra la URL. Si el navegador ya estaba abierto, solo añade una pestaña.</li>
+<li><code>open</code> <strong>termina enseguida</strong> con código 0. El navegador sigue abierto, pero <strong>no es hijo nuestro</strong>: si cerramos el programa Java, la web sigue abierta.</li>
+</ol>
+<h3 id="version-para-cualquier-sistema">Versión para cualquier sistema<a class="headerlink" href="#version-para-cualquier-sistema" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">abrir</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"os.name"</span><span class="p">).</span><span class="na">toLowerCase</span><span class="p">();</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cmd</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">"win"</span><span class="p">))</span><span class="w">      </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"cmd"</span><span class="p">,</span><span class="w"> </span><span class="s">"/c"</span><span class="p">,</span><span class="w"> </span><span class="s">"start"</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">);</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">"mac"</span><span class="p">))</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"open"</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">);</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="k">else</span><span class="w">                         </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"xdg-open"</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">);</span><span class="w">        </span><span class="c1">// Linux</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="n">Process</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="n">cmd</span><span class="p">).</span><span class="na">inheritIO</span><span class="p">().</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Lanzado "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cmd</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" con PID "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">pid</span><span class="p">());</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Código de salida: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">waitFor</span><span class="p">());</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">El <code>""</code> de Windows</p>
+<p><code>start</code> interpreta el primer argumento entre comillas como el <strong>título de la ventana</strong>. Sin la cadena vacía <code>""</code>, tomaría la URL como título y no abriría nada.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Alternativa sin procesos</p>
+<p><code>java.awt.Desktop.getDesktop().browse(new URI(url))</code> también abre una web y elige el comando por nosotros. Pero no crea un proceso que podamos controlar, no da PID ni código de salida y no funciona en equipos sin entorno gráfico. En este tema usamos <code>ProcessBuilder</code> porque lo que estudiamos son los procesos.</p>
+</div>
+<h2 id="58-errores-frecuentes">5.8 Errores frecuentes<a class="headerlink" href="#58-errores-frecuentes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Qué pasa</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pasar el comando en una sola cadena</td>
+<td><code>IOException</code>: no encuentra el programa</td>
+<td>Trocear: <code>"ping", "-c", "3", "8.8.8.8"</code></td>
+</tr>
+<tr>
+<td>Usar <code>ping</code> sin límite en Linux</td>
+<td>El hijo no termina nunca y <code>waitFor()</code> espera para siempre</td>
+<td><code>-c 3</code> en Linux y macOS, <code>-n 3</code> en Windows</td>
+</tr>
+<tr>
+<td>No compilar la clase hija</td>
+<td>«Could not find or load main class»</td>
+<td><code>javac *.java</code></td>
+</tr>
+<tr>
+<td>Devolver el resultado con <code>return</code></td>
+<td>El código de salida siempre es 0</td>
+<td><code>System.exit(n)</code></td>
+</tr>
+<tr>
+<td>Lanzar procesos dentro de un bucle sin control</td>
+<td>El equipo se llena de procesos y se queda sin recursos</td>
+<td>Comprobar bien la condición del bucle y esperar a los hijos</td>
+</tr>
+<tr>
+<td>Concatenar lo que escribe el usuario en una orden de <code>cmd</code> o <code>bash</code></td>
+<td><strong>Inyección de órdenes</strong>: el usuario puede ejecutar lo que quiera</td>
+<td>Pasar los datos como argumentos separados y validarlos</td>
+</tr>
+</tbody>
+</table>
+<h2 id="preguntas-de-repaso">Preguntas de repaso<a class="headerlink" href="#preguntas-de-repaso" title="Permanent link">&para;</a></h2>
+<ol>
+<li>¿Qué diferencia hay entre <code>ProcessBuilder</code> y <code>Process</code>? ¿De cuál es el método <code>start()</code>?</li>
+<li>¿Por qué hay que trocear el comando? ¿Qué pasa si no se hace?</li>
+<li>¿Para qué sirve <code>inheritIO()</code>? ¿Qué pasa con la salida del hijo si no se llama?</li>
+<li>En el ejemplo del cocinero, ¿por dónde viajan los datos del padre al hijo? ¿Y la respuesta del hijo al padre?</li>
+<li>Al abrir una web, ¿por qué el proceso termina enseguida aunque el navegador siga abierto?</li>
+<li>¿Qué excepción lanza <code>start()</code> si el programa no existe? ¿Y <code>waitFor()</code> si interrumpen al padre?</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../04-planificacion/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 4. Planificación de la CPU">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                4. Planificación de la CPU
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../06-comunicar-controlar/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 6. Comunicar y controlar procesos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                6. Comunicar y controlar procesos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
