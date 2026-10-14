@@ -1,0 +1,21 @@
+/* Diagramas de Gantt en HTML */
+.gantt { margin: 1.2em 0 1.6em; font-size: .78rem; }
+.gantt .g-titulo { font-weight: 600; margin-bottom: .4em; }
+.gantt .g-fila { display: flex; align-items: center; margin-bottom: 4px; }
+.gantt .g-etq { width: 6.5em; flex: none; color: var(--md-default-fg-color--light); }
+.gantt .g-pista { position: relative; flex: 1; height: 2.1em; background: var(--md-code-bg-color); border-radius: 4px; }
+.gantt .g-barra { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; border-radius: 4px; border-right: 2px solid var(--md-default-bg-color); box-sizing: border-box; }
+.gantt .g-eje { position: relative; margin-left: 6.5em; height: 1.4em; color: var(--md-default-fg-color--light); }
+.gantt .g-eje span { position: absolute; transform: translateX(-50%); }
+.gantt .c1 { background: #b34a12; } .gantt .c2 { background: #007a5e; } .gantt .c3 { background: #5a4b94; } .gantt .c4 { background: #1f5f99; }
+
+/* Diagrama de estados en SVG */
+svg.diagrama { width: 100%; height: auto; max-width: 760px; display: block; margin: 1em auto 1.6em; }
+svg.diagrama .caja { fill: var(--md-code-bg-color); stroke: var(--md-default-fg-color--light); stroke-width: 1.5; }
+svg.diagrama .caja.activa { fill: #b34a12; stroke: #b34a12; }
+svg.diagrama .txt { fill: var(--md-default-fg-color); font-size: 15px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
+svg.diagrama .caja.activa + .txt { fill: #fff; }
+svg.diagrama .flecha { stroke: var(--md-default-fg-color--light); stroke-width: 1.6; fill: none; marker-end: url(#punta); }
+svg.diagrama .etq { fill: var(--md-default-fg-color--light); font-size: 12.5px; text-anchor: middle; }
+svg.diagrama #punta path { fill: var(--md-default-fg-color--light); }

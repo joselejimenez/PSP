@@ -1,0 +1,85 @@
+site_name: PSP · Programación de Servicios y Procesos
+site_description: 2.º DAM · IES Rafael Alberti · Curso 2026/27
+site_url: https://joselejimenez.github.io/PSP/
+repo_url: https://github.com/joselejimenez/PSP
+docs_dir: docs
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+    - scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - search.highlight
+
+hooks:
+  - hooks/ocultar_temas.py
+
+extra:
+  # Lo que todavía NO ve el alumnado (lo gestiona hooks/ocultar_temas.py).
+  # Para publicar algo, comenta su línea con # y vuelve a construir la web.
+  ocultos:
+    - temas/tema-1/practica.md     # Práctica evaluable del Tema 1
+    - temas/tema-2                 # Tema 2 completo
+    - temas/tema-3                 # Tema 3 completo
+
+extra_css:
+  - assets/stylesheets/psp.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Inicio: index.md
+  - Planificación: planificacion.md
+  - RA y criterios: ra-ce.md
+  - Tema 1. Multiprocesos:
+      - Presentación: temas/tema-1/index.md
+      - 1. Programa, proceso, servicio e hilo: temas/tema-1/01-conceptos.md
+      - 2. Concurrente, paralela y distribuida: temas/tema-1/02-tipos-programacion.md
+      - 3. Estados de un proceso: temas/tema-1/03-estados.md
+      - 4. Planificación de la CPU: temas/tema-1/04-planificacion.md
+      - 5. Crear procesos en Java: temas/tema-1/05-crear-procesos.md
+      - 6. Comunicar y controlar procesos: temas/tema-1/06-comunicar-controlar.md
+      - Boletín de ejercicios: temas/tema-1/boletin.md
+     # - Práctica evaluable: temas/tema-1/practica.md
+  - Tema 2. Multihilos:
+      - Contenidos: temas/tema-2/index.md
+      - Boletín de ejercicios: temas/tema-2/boletin.md
+      - Práctica evaluable: temas/tema-2/practica.md
+  - Tema 3. Comunicaciones en red:
+      - Contenidos: temas/tema-3/index.md
+      - Boletín de ejercicios: temas/tema-3/boletin.md
+      - Práctica evaluable: temas/tema-3/practica.md
