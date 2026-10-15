@@ -2,46 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://joselejimenez.github.io/PSP/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/planificacion/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/ra-ce/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/01-fundamentos/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/02-metodos-arrays/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/03-cadenas/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/04-excepciones/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/05-poo/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/06-colecciones/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/07-java-moderno/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/08-ficheros-es/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/boletin/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://joselejimenez.github.io/PSP/temas/tema-0/soluciones/</loc>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/temas/tema-1/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/temas/tema-1/01-conceptos/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/temas/tema-1/02-tipos-programacion/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/temas/tema-1/03-estados/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/temas/tema-1/04-planificacion/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/temas/tema-1/05-crear-procesos/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/temas/tema-1/06-comunicar-controlar/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
     <url>
          <loc>https://joselejimenez.github.io/PSP/temas/tema-1/boletin/</loc>
-         <lastmod>2026-10-14</lastmod>
+         <lastmod>2026-10-15</lastmod>
     </url>
 </urlset>
