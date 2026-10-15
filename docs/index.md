@@ -19,6 +19,7 @@ Módulo profesional 0495, de 63 horas: 3 horas a la semana, los miércoles. Todo
 
 | Tema | RA | Trimestre |
 |---|---|---|
+| [Tema 0. Repaso Java](temas/tema-0/index.md) 
 | [Tema 1. Multiprocesos](temas/tema-1/index.md) | RA1 | 1.º |
 | Tema 2. Multihilos | RA2 | 1.º |
 | Tema 3. Comunicaciones en red | RA3 | 1.º |

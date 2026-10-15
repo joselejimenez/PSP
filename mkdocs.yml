@@ -65,6 +65,18 @@ nav:
   - Inicio: index.md
   - Planificación: planificacion.md
   - RA y criterios: ra-ce.md
+  - Tema 0. Repaso de Java:
+    - Presentación: temas/tema-0/index.md
+    - 1. Fundamentos: temas/tema-0/01-fundamentos.md
+    - 2. Métodos y arrays: temas/tema-0/02-metodos-arrays.md
+    - 3. Cadenas de texto: temas/tema-0/03-cadenas.md
+    - 4. Excepciones: temas/tema-0/04-excepciones.md
+    - 5. Programación orientada a objetos: temas/tema-0/05-poo.md
+    - 6. Colecciones: temas/tema-0/06-colecciones.md
+    - 7. Java moderno: temas/tema-0/07-java-moderno.md
+    - 8. Ficheros y entrada/salida estándar: temas/tema-0/08-ficheros-es.md
+    - Boletín de repaso: temas/tema-0/boletin.md
+    - Soluciones: temas/tema-0/soluciones.md
   - Tema 1. Multiprocesos:
       - Presentación: temas/tema-1/index.md
       - 1. Programa, proceso, servicio e hilo: temas/tema-1/01-conceptos.md
