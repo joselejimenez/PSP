@@ -5,6 +5,7 @@
     - Cubren los apartados 1 a 4 y 6 a 8. Cada ejercicio indica los **criterios de evaluación del RA2** que trabaja.
     - Entrega: un proyecto con una clase por programa y un `README.md` con las respuestas de análisis, las tablas de tiempos y una captura de cada ejecución.
     - Ejecuta cada programa **varias veces**: con hilos, una sola ejecución correcta no demuestra que el programa esté bien.
+    - Cuando termines, revisa tus programas con las [soluciones del boletín](boletin-soluciones.md).
 
 | Nº | Ejercicio | Nivel | CE |
 |---|---|---|---|

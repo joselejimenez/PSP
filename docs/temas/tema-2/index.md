@@ -38,7 +38,7 @@ En el Tema 1 aprendiste a lanzar **procesos**: programas completos, cada uno con
 1. Lee cada apartado **después** de la explicación en clase. El texto amplía lo que se ve en las diapositivas.
 2. Copia y ejecuta los ejemplos. Todos funcionan con **JDK 21 o superior**. Ejecútalos **varias veces**: con hilos, el orden de la salida cambia de una ejecución a otra, y verlo es parte de lo que hay que aprender.
 3. Al final de cada apartado tienes **preguntas de repaso**. Si no sabes responder alguna, vuelve a leer la sección.
-4. Practica con el [boletín de ejercicios](boletin.md).
+4. Practica con el [boletín de ejercicios](boletin.md) y revisa tus programas con sus [soluciones](boletin-soluciones.md).
 
 !!! tip "Antes de empezar"
     Comprueba tu versión de Java con `java -version`: debe ser la **21 o superior**. Algunas partes del tema, como `Thread.ofVirtual()`, no existen en versiones anteriores.

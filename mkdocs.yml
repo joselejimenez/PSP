@@ -101,6 +101,7 @@ nav:
       - 7. synchronized: temas/tema-2/07-synchronized.md
       - 8. Clases atómicas: temas/tema-2/08-atomicas.md
       - Boletín de ejercicios: temas/tema-2/boletin.md
+      - "Boletín: soluciones": temas/tema-2/boletin-soluciones.md
       - Práctica evaluable: temas/tema-2/practica.md
   - Tema 3. Comunicaciones en red:
       - Contenidos: temas/tema-3/index.md
