@@ -21,7 +21,7 @@ Módulo profesional 0495, de 63 horas: 3 horas a la semana, los miércoles. Todo
 |---|---|---|
 | [Tema 0. Repaso Java](temas/tema-0/index.md) 
 | [Tema 1. Multiprocesos](temas/tema-1/index.md) | RA1 | 1.º |
-| Tema 2. Multihilos | RA2 | 1.º |
+| [Tema 2. Multihilos](temas/tema-2/index.md) | RA2 | 1.º |
 | Tema 3. Comunicaciones en red | RA3 | 1.º |
 | Tema 4. Generación de servicios en red | RA4 | 2.º |
 | Tema 5. Técnicas de programación segura | RA5 | 2.º |
@@ -31,3 +31,4 @@ Los temas aparecen en esta web a medida que se van impartiendo.
 ## Documentación de referencia
 
 - Documentación oficial de Java: [`ProcessBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessBuilder.html), [`Process`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Process.html) y [`ProcessHandle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ProcessHandle.html).
+- Documentación oficial de Java para hilos: [`Thread`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html), [`Thread.State`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.State.html) y [`AtomicInteger`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/atomic/AtomicInteger.html).

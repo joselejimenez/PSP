@@ -36,7 +36,8 @@ extra:
   # Para publicar algo, comenta su línea con # y vuelve a construir la web.
   ocultos:
     - temas/tema-1/practica.md     # Práctica evaluable del Tema 1
-    - temas/tema-2                 # Tema 2 completo
+    - temas/tema-2/05-hilos-virtuales.md   # Tema 2, apartado 5: se publica el 11 nov
+    - temas/tema-2/practica.md     # Práctica evaluable del Tema 2
     - temas/tema-3                 # Tema 3 completo
 
 extra_css:
@@ -88,7 +89,16 @@ nav:
       - Boletín de ejercicios: temas/tema-1/boletin.md
      # - Práctica evaluable: temas/tema-1/practica.md
   - Tema 2. Multihilos:
-      - Contenidos: temas/tema-2/index.md
+      - Presentación: temas/tema-2/index.md
+      - 1. Proceso frente a hilo: temas/tema-2/01-proceso-hilo.md
+      - 2. Crear hilos en Java: temas/tema-2/02-crear-hilos.md
+      - 3. Ciclo de vida de un hilo: temas/tema-2/03-estados.md
+      - 4. Controlar hilos: temas/tema-2/04-controlar-hilos.md
+      - 5. Hilos virtuales: temas/tema-2/05-hilos-virtuales.md
+      - "Práctica guiada: gestor de descargas": temas/tema-2/practica-guiada.md
+      - 6. Condición de carrera: temas/tema-2/06-condicion-carrera.md
+      - 7. synchronized: temas/tema-2/07-synchronized.md
+      - 8. Clases atómicas: temas/tema-2/08-atomicas.md
       - Boletín de ejercicios: temas/tema-2/boletin.md
       - Práctica evaluable: temas/tema-2/practica.md
   - Tema 3. Comunicaciones en red:
