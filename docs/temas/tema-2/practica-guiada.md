@@ -109,5 +109,8 @@ Y responde:
 4. En el paso 4, ¿por qué no basta con hacer `join(3000)` a cada hilo?
 5. ¿Qué pasaría en el paso 4 si `descargar()` tuviera un `catch` vacío?
 
+!!! success "Solución"
+    Cuando termines, compara tu programa con la [solución de los cuatro pasos](practica-guiada-solucion.md).
+
 !!! tip "Para el apartado 8"
     Más adelante añadirás a este programa un contador de descargas completadas y canceladas. Guarda tu `Descargas.java`.

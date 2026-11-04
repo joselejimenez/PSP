@@ -96,6 +96,7 @@ nav:
       - 4. Controlar hilos: temas/tema-2/04-controlar-hilos.md
       - 5. Hilos virtuales: temas/tema-2/05-hilos-virtuales.md
       - "Práctica guiada: gestor de descargas": temas/tema-2/practica-guiada.md
+      - "Práctica guiada: solución": temas/tema-2/practica-guiada-solucion.md
       - 6. Condición de carrera: temas/tema-2/06-condicion-carrera.md
       - 7. synchronized: temas/tema-2/07-synchronized.md
       - 8. Clases atómicas: temas/tema-2/08-atomicas.md
