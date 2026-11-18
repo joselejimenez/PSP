@@ -17,7 +17,8 @@ Clase los **miércoles, 3 horas**. La prueba de la 1.ª evaluación es el **9 de
 | 21 oct | Tema 1 | Repaso, boletín de ejercicios y prueba corta del tema. |
 <!-- fin -->
 | 28 oct | Tema 2 | Hilos: proceso frente a hilo, `Thread` y `Runnable`, estados, `start`, `join`, `sleep` e `interrupt`, hilos demonio. |
-| 4 y 11 nov | Tema 2 | Práctica guiada: gestor de descargas. Condición de carrera, sección crítica, `synchronized` y clases atómicas. |
+| 4 nov | Tema 2 | Práctica guiada: gestor de descargas. Condición de carrera, sección crítica, `synchronized` y clases atómicas. |
+| 11 nov | — | Sin clase (huelga). |
 | 18 nov | Tema 2 | [Taller práctico](temas/tema-2/taller.md): condición de carrera, `synchronized` y clases atómicas. |
 | 25 nov | Tema 2 | `Lock`, productor-consumidor (`wait`/`notify` y `BlockingQueue`) e interbloqueo. Ejecutores e hilos virtuales. |
 <!-- si-visible: temas/tema-2/practica.md -->
