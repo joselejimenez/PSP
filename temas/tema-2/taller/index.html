@@ -1721,6 +1721,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parte-3-desde-cero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 3 · Desde cero
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 3 · Desde cero">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r1-condicion-de-carrera-los-tornos-del-metro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R1 · Condición de carrera: los tornos del metro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2-synchronized-la-hucha-de-los-hermanos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R2 · synchronized: la hucha de los hermanos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r3-clases-atomicas-las-visitas-de-la-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R3 · Clases atómicas: las visitas de la web
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1913,6 +1963,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parte-3-desde-cero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 3 · Desde cero
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 3 · Desde cero">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r1-condicion-de-carrera-los-tornos-del-metro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R1 · Condición de carrera: los tornos del metro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2-synchronized-la-hucha-de-los-hermanos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R2 · synchronized: la hucha de los hermanos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r3-clases-atomicas-las-visitas-de-la-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R3 · Clases atómicas: las visitas de la web
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1938,7 +2038,9 @@
 <p class="admonition-title">Cómo funciona este taller</p>
 <ul>
 <li><strong>Parte 1, en la pizarra:</strong> resolvemos juntos un ejercicio de cada tipo, paso a paso.</li>
-<li><strong>Parte 2, por tu cuenta:</strong> haces <strong>dos ejercicios de cada tipo</strong>. Entrega un proyecto con una clase por programa y un <code>README.md</code> con las tablas, las salidas y las respuestas.</li>
+<li><strong>Parte 2, por tu cuenta:</strong> haces <strong>dos ejercicios de cada tipo</strong>, partiendo del código que se da.</li>
+<li><strong>Parte 3, desde cero:</strong> <strong>un ejercicio de cada tipo</strong> en el que solo tienes el enunciado. El programa lo escribes tú entero.</li>
+<li>Entrega un proyecto con una clase por programa y un <code>README.md</code> con las tablas, las salidas y las respuestas.</li>
 <li>Ejecuta cada programa <strong>varias veces</strong>: una ejecución correcta no demuestra que el programa esté bien.</li>
 </ul>
 </div>
@@ -1948,6 +2050,7 @@
 <th>Tipo</th>
 <th>En la pizarra</th>
 <th>Por tu cuenta</th>
+<th>Desde cero</th>
 </tr>
 </thead>
 <tbody>
@@ -1955,16 +2058,19 @@
 <td>Condición de carrera</td>
 <td>P1 · ¿Qué saldo queda?</td>
 <td>C1 · El termostato · C2 · La última entrada</td>
+<td>R1 · Los tornos del metro</td>
 </tr>
 <tr>
 <td><code>synchronized</code></td>
 <td>P2 · El aparcamiento</td>
 <td>S1 · La urna de votación · S2 · El marcador que no protege</td>
+<td>R2 · La hucha de los hermanos</td>
 </tr>
 <tr>
 <td>Clases atómicas</td>
 <td>P3 · Los likes</td>
 <td>A1 · Los tickets de la cola · A2 · Estadísticas de descargas</td>
+<td>R3 · Las visitas de la web</td>
 </tr>
 </tbody>
 </table>
@@ -2495,6 +2601,48 @@
 <li>Al final, el <code>main</code> muestra los ficheros (deben ser 1000) y compara los megas de la <code>AtomicLong</code> con la suma del array. Deben coincidir siempre.</li>
 <li>¿Por qué el total de megas se guarda en un <code>AtomicLong</code> y no en un <code>AtomicInteger</code>?</li>
 <li>¿Podrías usar tres clases atómicas en la urna de S1 en lugar de <code>synchronized</code>? ¿Qué problema tendría <code>resultados()</code>?</li>
+</ol>
+<h2 id="parte-3-desde-cero">Parte 3 · Desde cero<a class="headerlink" href="#parte-3-desde-cero" title="Permanent link">&para;</a></h2>
+<p>En estos tres ejercicios no hay código de partida: escribe tú el programa completo.</p>
+<h3 id="r1-condicion-de-carrera-los-tornos-del-metro">R1 · Condición de carrera: los tornos del metro<a class="headerlink" href="#r1-condicion-de-carrera-los-tornos-del-metro" title="Permanent link">&para;</a></h3>
+<p>Una estación de metro cuenta cuántas personas hay dentro con una variable compartida <code>pasajeros</code>, que empieza en 0. Hay tres tornos, cada uno en su propio hilo:</p>
+<ul>
+<li><strong>Entrada 1:</strong> entran 50.000 personas. Cada una suma 1.</li>
+<li><strong>Entrada 2:</strong> entran otras 50.000 personas. Cada una suma 1.</li>
+<li>
+<p><strong>Salida:</strong> salen 30.000 personas. Cada una resta 1.</p>
+</li>
+<li>
+<p>Escribe el programa <strong>sin ninguna protección</strong>. Al final, el <code>main</code> muestra cuántos pasajeros quedan dentro. Deberían ser 70.000.</p>
+</li>
+<li>Ejecútalo 5 veces y apunta los resultados.</li>
+<li>Explica con una tabla de pasos cómo se pierde una entrada cuando una persona entra por el torno 1 y otra por el torno 2 a la vez.</li>
+<li>¿Cuál es el recurso compartido? ¿Y la sección crítica?</li>
+<li>Arréglalo con <code>synchronized</code> y comprueba que sale siempre 70.000.</li>
+</ul>
+<h3 id="r2-synchronized-la-hucha-de-los-hermanos">R2 · synchronized: la hucha de los hermanos<a class="headerlink" href="#r2-synchronized-la-hucha-de-los-hermanos" title="Permanent link">&para;</a></h3>
+<p>Cuatro hermanos comparten una hucha que empieza con <strong>20.000 €</strong>.</p>
+<ol>
+<li>Escribe una clase <code>Hucha</code> con:<ul>
+<li>un atributo privado <code>dinero</code>, que empieza en 20.000;</li>
+<li>un método <code>meter(int cantidad)</code>, que suma la cantidad;</li>
+<li>un método <code>sacar(int cantidad)</code>, que <strong>solo saca si hay dinero suficiente</strong> y devuelve <code>true</code> si ha podido sacar o <code>false</code> si no;</li>
+<li>un método <code>getDinero()</code>.</li>
+</ul>
+</li>
+<li>En el <code>main</code>, crea <strong>una sola hucha</strong> y cuatro hilos: dos hermanos meten 1 € 10.000 veces cada uno y los otros dos sacan 1 € 10.000 veces cada uno.</li>
+<li>Al final debería haber exactamente 20.000 €. Ejecútalo primero sin <code>synchronized</code> y apunta lo que sale.</li>
+<li>Añade <code>synchronized</code> donde haga falta y comprueba que sale siempre 20.000.</li>
+<li>¿Por qué <code>sacar</code> tiene que ser <code>synchronized</code> entero y no basta con proteger la resta?</li>
+</ol>
+<h3 id="r3-clases-atomicas-las-visitas-de-la-web">R3 · Clases atómicas: las visitas de la web<a class="headerlink" href="#r3-clases-atomicas-las-visitas-de-la-web" title="Permanent link">&para;</a></h3>
+<p>Una web tiene tres páginas: <strong>inicio</strong>, <strong>tienda</strong> y <strong>contacto</strong>. Queremos contar cuántas visitas recibe cada una.</p>
+<ol>
+<li>Crea un contador <code>AtomicInteger</code> para cada página.</li>
+<li>Lanza <strong>6 hilos</strong>, uno por usuario. Cada usuario hace <strong>10.000 visitas</strong>, y en cada visita elige al azar una de las tres páginas y suma 1 a su contador. Para elegir: <code>ThreadLocalRandom.current().nextInt(3)</code> devuelve 0, 1 o 2.</li>
+<li>Al final, muestra las visitas de cada página y el total. El total debe ser siempre 60.000.</li>
+<li>Cambia los tres <code>AtomicInteger</code> por tres <code>static int</code> con <code>++</code> y ejecútalo varias veces. ¿Qué pasa con el total?</li>
+<li>¿Por qué aquí basta con clases atómicas y no hace falta <code>synchronized</code>?</li>
 </ol>
 
 
