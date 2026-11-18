@@ -2248,11 +2248,13 @@
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>Plazas libres al final: -2
 </code></pre></div>
 <p>Aparcan los cinco y quedan <strong>−2 plazas</strong>. Es un <strong>comprobar y actuar</strong>: todos ven que hay plazas libres antes de que ninguno reste.</p>
-<p><strong>La solución:</strong> añadir <code>synchronized</code> a <code>entrar</code>. Como el método y <code>plazasLibres</code> son <code>static</code>, el cerrojo es la clase, uno para todos los coches:</p>
+<p><strong>La solución:</strong> añadir la palabra <code>synchronized</code> al método <code>entrar</code>. El resto del código no cambia:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">static</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">coche</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="c1">// el mismo cuerpo que antes</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
 </code></pre></div>
+<p><code>synchronized</code> funciona como <strong>la única llave de la barrera del aparcamiento</strong>. Para entrar en el método, un coche tiene que coger la llave; al salir, la devuelve. Mientras un coche tiene la llave, los demás esperan en la cola.</p>
+<p>Para que funcione, todos los coches tienen que pelearse por <strong>la misma llave</strong>. Aquí es así porque <code>entrar</code> es <code>static</code>: pertenece a la clase <code>Aparcamiento</code>, no a ningún objeto, y Java usa la propia clase como llave. Como solo hay una clase <code>Aparcamiento</code>, solo hay una llave para los cinco coches.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Coche-1 aparca. Quedan 2
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Coche-5 aparca. Quedan 1
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Coche-4 aparca. Quedan 0
