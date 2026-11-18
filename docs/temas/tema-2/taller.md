@@ -2,14 +2,16 @@
 
 !!! info "Cómo funciona este taller"
     - **Parte 1, en la pizarra:** resolvemos juntos un ejercicio de cada tipo, paso a paso.
-    - **Parte 2, por tu cuenta:** haces **dos ejercicios de cada tipo**. Entrega un proyecto con una clase por programa y un `README.md` con las tablas, las salidas y las respuestas.
+    - **Parte 2, por tu cuenta:** haces **dos ejercicios de cada tipo**, partiendo del código que se da.
+    - **Parte 3, desde cero:** **un ejercicio de cada tipo** en el que solo tienes el enunciado. El programa lo escribes tú entero.
+    - Entrega un proyecto con una clase por programa y un `README.md` con las tablas, las salidas y las respuestas.
     - Ejecuta cada programa **varias veces**: una ejecución correcta no demuestra que el programa esté bien.
 
-| Tipo | En la pizarra | Por tu cuenta |
-|---|---|---|
-| Condición de carrera | P1 · ¿Qué saldo queda? | C1 · El termostato · C2 · La última entrada |
-| `synchronized` | P2 · El aparcamiento | S1 · La urna de votación · S2 · El marcador que no protege |
-| Clases atómicas | P3 · Los likes | A1 · Los tickets de la cola · A2 · Estadísticas de descargas |
+| Tipo | En la pizarra | Por tu cuenta | Desde cero |
+|---|---|---|---|
+| Condición de carrera | P1 · ¿Qué saldo queda? | C1 · El termostato · C2 · La última entrada | R1 · Los tornos del metro |
+| `synchronized` | P2 · El aparcamiento | S1 · La urna de votación · S2 · El marcador que no protege | R2 · La hucha de los hermanos |
+| Clases atómicas | P3 · Los likes | A1 · Los tickets de la cola · A2 · Estadísticas de descargas | R3 · Las visitas de la web |
 
 !!! tip "Lo que tienes que tener claro antes de empezar"
     - Hay **condición de carrera** cuando se dan tres cosas a la vez: varios hilos, un dato compartido y al menos un hilo que escribe.
@@ -476,6 +478,48 @@ Escribe tú el programa completo:
 4. Al final, el `main` muestra los ficheros (deben ser 1000) y compara los megas de la `AtomicLong` con la suma del array. Deben coincidir siempre.
 5. ¿Por qué el total de megas se guarda en un `AtomicLong` y no en un `AtomicInteger`?
 6. ¿Podrías usar tres clases atómicas en la urna de S1 en lugar de `synchronized`? ¿Qué problema tendría `resultados()`?
+
+## Parte 3 · Desde cero
+
+En estos tres ejercicios no hay código de partida: escribe tú el programa completo.
+
+### R1 · Condición de carrera: los tornos del metro
+
+Una estación de metro cuenta cuántas personas hay dentro con una variable compartida `pasajeros`, que empieza en 0. Hay tres tornos, cada uno en su propio hilo:
+
+- **Entrada 1:** entran 50.000 personas. Cada una suma 1.
+- **Entrada 2:** entran otras 50.000 personas. Cada una suma 1.
+- **Salida:** salen 30.000 personas. Cada una resta 1.
+
+1. Escribe el programa **sin ninguna protección**. Al final, el `main` muestra cuántos pasajeros quedan dentro. Deberían ser 70.000.
+2. Ejecútalo 5 veces y apunta los resultados.
+3. Explica con una tabla de pasos cómo se pierde una entrada cuando una persona entra por el torno 1 y otra por el torno 2 a la vez.
+4. ¿Cuál es el recurso compartido? ¿Y la sección crítica?
+5. Arréglalo con `synchronized` y comprueba que sale siempre 70.000.
+
+### R2 · synchronized: la hucha de los hermanos
+
+Cuatro hermanos comparten una hucha que empieza con **20.000 €**.
+
+1. Escribe una clase `Hucha` con:
+    - un atributo privado `dinero`, que empieza en 20.000;
+    - un método `meter(int cantidad)`, que suma la cantidad;
+    - un método `sacar(int cantidad)`, que **solo saca si hay dinero suficiente** y devuelve `true` si ha podido sacar o `false` si no;
+    - un método `getDinero()`.
+2. En el `main`, crea **una sola hucha** y cuatro hilos: dos hermanos meten 1 € 10.000 veces cada uno y los otros dos sacan 1 € 10.000 veces cada uno.
+3. Al final debería haber exactamente 20.000 €. Ejecútalo primero sin `synchronized` y apunta lo que sale.
+4. Añade `synchronized` donde haga falta y comprueba que sale siempre 20.000.
+5. ¿Por qué `sacar` tiene que ser `synchronized` entero y no basta con proteger la resta?
+
+### R3 · Clases atómicas: las visitas de la web
+
+Una web tiene tres páginas: **inicio**, **tienda** y **contacto**. Queremos contar cuántas visitas recibe cada una.
+
+1. Crea un contador `AtomicInteger` para cada página.
+2. Lanza **6 hilos**, uno por usuario. Cada usuario hace **10.000 visitas**, y en cada visita elige al azar una de las tres páginas y suma 1 a su contador. Para elegir: `ThreadLocalRandom.current().nextInt(3)` devuelve 0, 1 o 2.
+3. Al final, muestra las visitas de cada página y el total. El total debe ser siempre 60.000.
+4. Cambia los tres `AtomicInteger` por tres `static int` con `++` y ejecútalo varias veces. ¿Qué pasa con el total?
+5. ¿Por qué aquí basta con clases atómicas y no hace falta `synchronized`?
 
 <!-- si-visible: temas/tema-2/taller-soluciones.md -->
 !!! success "Soluciones"

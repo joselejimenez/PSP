@@ -1,6 +1,6 @@
 # Taller práctico · Soluciones
 
-Soluciones de los seis ejercicios de la [Parte 2 del taller](taller.md#parte-2-por-tu-cuenta). Los programas son completos y están probados con JDK 21, y las salidas son de ejecuciones reales. Tus números serán otros, pero el comportamiento debe ser el mismo.
+Soluciones de los ejercicios de la [Parte 2](taller.md#parte-2-por-tu-cuenta) y de la [Parte 3](taller.md#parte-3-desde-cero) del taller. Los programas son completos y están probados con JDK 21, y las salidas son de ejecuciones reales. Tus números serán otros, pero el comportamiento debe ser el mismo.
 
 ## C1 · El termostato
 
@@ -272,3 +272,185 @@ Megas: 49920 · suma de cada hilo: 49920 (coincide)
 - Cada hilo suma sus megas en `mios`, una variable **local**, y la guarda en **su** posición de `comprobacion`. Así se puede comprobar el resultado sin compartir nada.
 - **Pregunta 5:** con muchas descargas grandes, el total de megas puede pasar del máximo de un `int` (2.147.483.647). Un `long` llega mucho más lejos.
 - **Pregunta 6:** con tres atómicas, cada contador por separado acabaría bien, pero `votar()` dejaría de ser una operación única. Si `resultados()` se llama mientras se vota, puede leer el contador de A ya sumado y el total todavía sin sumar, y no cuadraría. Cuando varias variables deben cambiar juntas, hace falta `synchronized`.
+
+## R1 · Los tornos del metro
+
+Versión sin protección:
+
+```java
+public class Metro {
+    static int pasajeros = 0;                           // personas dentro de la estación
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread entrada1 = new Thread(() -> {
+            for (int i = 0; i < 50_000; i++) pasajeros++;
+        });
+        Thread entrada2 = new Thread(() -> {
+            for (int i = 0; i < 50_000; i++) pasajeros++;
+        });
+        Thread salida = new Thread(() -> {
+            for (int i = 0; i < 30_000; i++) pasajeros--;
+        });
+        entrada1.start();
+        entrada2.start();
+        salida.start();
+        entrada1.join();
+        entrada2.join();
+        salida.join();
+        System.out.println("Esperado 70000, obtenido " + pasajeros);
+    }
+}
+```
+
+1. El programa es el de arriba: tres hilos que suman o restan sobre `pasajeros` sin ninguna protección.
+2. Cada ejecución da un número distinto y casi nunca 70.000. Por ejemplo: 69911, 36888 y 31662.
+3. Se pierde una entrada:
+
+    | t | Entrada 1 (`++`) | Entrada 2 (`++`) | `pasajeros` |
+    |---|---|---|---|
+    | 1 | lee 500 | | 500 |
+    | 2 | | lee 500 | 500 |
+    | 3 | suma: 501 | | 500 |
+    | 4 | | suma: 501 | 500 |
+    | 5 | escribe 501 | | 501 |
+    | 6 | | escribe 501 | **501**: han entrado dos y solo cuenta una |
+
+4. El recurso compartido es `pasajeros`. La sección crítica es `pasajeros++` en los tornos de entrada y `pasajeros--` en el de salida: las tres deben protegerse con el mismo cerrojo.
+5. Con dos métodos `synchronized`, uno para entrar y otro para salir:
+
+```java
+public class MetroSync {
+    static int pasajeros = 0;
+
+    static synchronized void entra() { pasajeros++; }
+    static synchronized void sale() { pasajeros--; }
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread entrada1 = new Thread(() -> {
+            for (int i = 0; i < 50_000; i++) entra();
+        });
+        Thread entrada2 = new Thread(() -> {
+            for (int i = 0; i < 50_000; i++) entra();
+        });
+        Thread salida = new Thread(() -> {
+            for (int i = 0; i < 30_000; i++) sale();
+        });
+        entrada1.start();
+        entrada2.start();
+        salida.start();
+        entrada1.join();
+        entrada2.join();
+        salida.join();
+        System.out.println("Esperado 70000, obtenido " + pasajeros);
+    }
+}
+```
+
+```text
+Esperado 70000, obtenido 70000
+```
+
+Como los dos métodos son `static synchronized`, los tres tornos usan el mismo vigilante. También valdría un `AtomicInteger` con `incrementAndGet()` y `decrementAndGet()`.
+
+## R2 · La hucha de los hermanos
+
+```java
+public class Hucha {
+    private int dinero = 20_000;
+
+    public synchronized void meter(int cantidad) {
+        dinero += cantidad;
+    }
+
+    public synchronized boolean sacar(int cantidad) {
+        if (dinero < cantidad) {                        // comprobar...
+            return false;
+        }
+        dinero -= cantidad;                             // ...y actuar, sin que nadie se cuele
+        return true;
+    }
+
+    public synchronized int getDinero() {
+        return dinero;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Hucha hucha = new Hucha();                      // una sola hucha para los cuatro
+        Thread[] hermanos = new Thread[4];
+        for (int i = 0; i < hermanos.length; i++) {
+            boolean mete = i < 2;                       // los dos primeros meten, los otros dos sacan
+            hermanos[i] = new Thread(() -> {
+                for (int j = 0; j < 10_000; j++) {
+                    if (mete) {
+                        hucha.meter(1);
+                    } else {
+                        hucha.sacar(1);
+                    }
+                }
+            });
+            hermanos[i].start();
+        }
+        for (Thread h : hermanos) {
+            h.join();
+        }
+        System.out.println("Esperado 20000, obtenido " + hucha.getDinero());
+    }
+}
+```
+
+3. Sin `synchronized`, cada ejecución da un resultado distinto: 17390, 19571 y 24348 en tres pruebas. A veces hay dinero de menos y a veces de más, porque se pierden tanto ingresos como retiradas.
+4. Con `synchronized` en `meter`, `sacar` y `getDinero`, sale siempre 20.000. Los cuatro hermanos usan la misma hucha, así que comparten el mismo vigilante.
+5. `sacar` es un **comprobar y actuar**: primero mira si hay dinero y después resta. Si solo se protege la resta, dos hermanos pueden ver a la vez que queda 1 € y sacarlo los dos. La comprobación y la resta tienen que hacerse sin que nadie se cuele en medio.
+
+!!! note
+    En este ejercicio la hucha nunca llega a quedarse vacía, porque empieza con 20.000 € y como mucho se sacan 20.000. Aun así, `sacar` debe comprobar el saldo: el código tiene que ser correcto aunque cambien los números.
+
+## R3 · Las visitas de la web
+
+```java
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Visitas {
+    static AtomicInteger inicio = new AtomicInteger();
+    static AtomicInteger tienda = new AtomicInteger();
+    static AtomicInteger contacto = new AtomicInteger();
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread[] usuarios = new Thread[6];
+        for (int i = 0; i < usuarios.length; i++) {
+            usuarios[i] = new Thread(() -> {
+                for (int j = 0; j < 10_000; j++) {
+                    int pagina = ThreadLocalRandom.current().nextInt(3);   // 0, 1 o 2
+                    if (pagina == 0) {
+                        inicio.incrementAndGet();
+                    } else if (pagina == 1) {
+                        tienda.incrementAndGet();
+                    } else {
+                        contacto.incrementAndGet();
+                    }
+                }
+            });
+            usuarios[i].start();
+        }
+        for (Thread u : usuarios) {
+            u.join();
+        }
+        int total = inicio.get() + tienda.get() + contacto.get();
+        System.out.println("Inicio: " + inicio.get());
+        System.out.println("Tienda: " + tienda.get());
+        System.out.println("Contacto: " + contacto.get());
+        System.out.println("Total: " + total + " (esperado 60000)");
+    }
+}
+```
+
+```text
+Inicio: 20051
+Tienda: 20071
+Contacto: 19878
+Total: 60000 (esperado 60000)
+```
+
+4. Con `static int` y `++`, el total no llega a 60.000 y cambia en cada ejecución: 55981, 58484 y 58865 en tres pruebas.
+5. Cada visita cambia **un solo contador** con **una sola operación**: sumar 1. Eso es justo lo que hace una clase atómica de una vez. Haría falta `synchronized` si una visita tuviera que cambiar varias cosas que deben ir juntas, como en la urna de S1, donde cada voto suma a un candidato y al total.
