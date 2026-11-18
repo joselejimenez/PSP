@@ -109,6 +109,46 @@ Saldo 70 (se pierde el ingreso): 166 veces
 
 **Sección crítica:** desde que se lee el saldo hasta que se escribe.
 
+#### Cómo solucionarlo
+
+Hay que conseguir que leer, calcular y escribir se hagan **sin que el otro hilo pueda colarse en medio**. Basta con añadir `synchronized` al método `operar`. Como es `static`, el cerrojo es la clase, el mismo para los dos hilos:
+
+```java
+// synchronized: leer, calcular y escribir sin que el otro hilo pueda colarse
+static synchronized void operar(int cantidad) {
+    int leido = saldo;                          // 1. leer
+    int nuevo = leido + cantidad;               // 2. calcular
+    try {
+        Thread.sleep(1);
+    } catch (InterruptedException e) {
+        return;
+    }
+    saldo = nuevo;                              // 3. escribir
+}
+```
+
+El resto del programa no cambia. Ahora sale **siempre** 120:
+
+```text
+Saldo 120 (correcto): 200 veces
+Saldo 150 (se pierde el pago): 0 veces
+Saldo 70 (se pierde el ingreso): 0 veces
+```
+
+Qué pasa ahora cuando los dos hilos llegan a la vez:
+
+| t | Hilo A (+50) | Hilo B (−30) | `saldo` |
+|---|---|---|---|
+| 1 | coge el cerrojo y lee 100 | quiere entrar: espera (BLOCKED) | 100 |
+| 2 | escribe 150 y suelta el cerrojo | | 150 |
+| 3 | | coge el cerrojo y lee 150 | 150 |
+| 4 | | escribe 120 y suelta el cerrojo | **120** |
+
+Da igual quién entre primero: si entra antes B, A lee 70 y escribe 120. El resultado es siempre el correcto, porque **nunca leen los dos antes de que el otro escriba**.
+
+!!! note "¿Y con una clase atómica?"
+    También valdría un `AtomicInteger saldo` y `saldo.addAndGet(cantidad)`, que suma en un solo paso. Aquí usamos `synchronized` porque así se ve el leer, calcular y escribir dentro de la sección crítica.
+
 ### P2 · synchronized: el aparcamiento
 
 Un aparcamiento tiene **3 plazas** y llegan **5 coches** a la vez, cada uno en su hilo.
