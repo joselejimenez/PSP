@@ -198,7 +198,7 @@ Plazas libres al final: -2
 
 Aparcan los cinco y quedan **−2 plazas**. Es un **comprobar y actuar**: todos ven que hay plazas libres antes de que ninguno reste.
 
-**La solución:** añadir la palabra `synchronized` al método `entrar`. El resto del código no cambia:
+**La solución:** añadir la palabra `synchronized` al método `entrar`. El resto del código no cambia.
 
 ```java
 static synchronized void entrar(String coche) {
@@ -206,9 +206,9 @@ static synchronized void entrar(String coche) {
 }
 ```
 
-`synchronized` funciona como **la única llave de la barrera del aparcamiento**. Para entrar en el método, un coche tiene que coger la llave; al salir, la devuelve. Mientras un coche tiene la llave, los demás esperan en la cola.
+`synchronized` hace que **solo un coche pueda estar dentro de `entrar` a la vez**. Es como una barrera con un vigilante: deja pasar a un coche, espera a que aparque y solo entonces deja pasar al siguiente. Los demás esperan en la cola.
 
-Para que funcione, todos los coches tienen que pelearse por **la misma llave**. Aquí es así porque `entrar` es `static`: pertenece a la clase `Aparcamiento`, no a ningún objeto, y Java usa la propia clase como llave. Como solo hay una clase `Aparcamiento`, solo hay una llave para los cinco coches.
+Así, cuando un coche mira si quedan plazas, ningún otro puede quitársela antes de que aparque.
 
 ```text
 Coche-1 aparca. Quedan 2
@@ -407,8 +407,15 @@ public class Marcador {
 ```
 
 1. Ejecútalo varias veces y comprueba que no sale 400.000.
-2. Explica por qué `synchronized` no está protegiendo nada. Pista: ¿cuál es el cerrojo de `sumar()`? ¿Cuántos objetos `Puntos` hay?
-3. Arréglalo de **dos formas distintas** y comprueba que las dos funcionan.
+2. Explica por qué `synchronized` no está protegiendo nada.
+3. Arréglalo y comprueba que sale siempre 400.000.
+
+!!! tip "Recomendación"
+    Fíjate en la línea `Puntos p = new Puntos();`: está **dentro** del hilo, así que cada jugador crea su propio objeto. Hay cuatro objetos `Puntos`.
+
+    Cada objeto tiene **su propio vigilante**. Con cuatro objetos hay cuatro vigilantes, y cada uno deja pasar a su jugador sin mirar a los demás. Pero los cuatro suman en el mismo marcador, así que vuelven a pisarse.
+
+    Para arreglarlo, crea **un solo objeto `Puntos` antes del bucle** y haz que los cuatro jugadores lo usen. Así solo hay un vigilante para todos.
 
 ### A1 · Clases atómicas: los tickets de la cola
 

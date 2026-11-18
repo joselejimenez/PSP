@@ -159,18 +159,16 @@ Esperado total=100000 → A=50231 B=49769 total=100000 (cuadra)
 ## S2 · El marcador que no protege
 
 1. Sale menos de 400.000: por ejemplo, 379582, 388764 y 385449.
-2. `sumar()` es `synchronized` sobre **`this`**, pero cada jugador crea **su propio** objeto `Puntos`. Hay cuatro objetos y, por tanto, cuatro cerrojos distintos: nadie espera a nadie. En cambio, `puntos` es `static`, así que los cuatro objetos comparten **la misma** variable. Cerrojos distintos para un dato compartido no protegen nada.
-3. Hay dos formas de arreglarlo:
-    - **Hacer el método `static synchronized`.** El cerrojo pasa a ser la clase, uno solo para todos. Es la versión de abajo.
-    - **Compartir un único objeto.** Se crea un solo `Puntos` antes del bucle y todos los jugadores llaman a `sumar()` sobre él. Así `this` es el mismo para todos.
+2. Cada jugador crea **su propio** objeto `Puntos`, porque `new Puntos()` está dentro del hilo. Cada objeto tiene su propio vigilante: con cuatro objetos hay cuatro vigilantes, y ninguno hace esperar a los jugadores de los otros. Pero los cuatro suman en el mismo marcador, así que los incrementos se pierden igual que sin `synchronized`.
+3. Se crea **un solo objeto `Puntos` antes del bucle** y los cuatro jugadores lo usan. Así hay un único vigilante y los jugadores suman de uno en uno:
 
 ```java
-public class MarcadorSync {
+public class MarcadorCompartido {
 
     static class Puntos {
-        private static int puntos = 0;                        // static: compartido por TODOS los objetos
+        private static int puntos = 0;
 
-        public static synchronized void sumar() {             // cerrojo: la clase, uno para todos
+        public synchronized void sumar() {
             puntos++;
         }
 
@@ -180,11 +178,12 @@ public class MarcadorSync {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        Puntos p = new Puntos();                              // UN solo objeto, creado fuera de los hilos
         Thread[] jugadores = new Thread[4];
         for (int i = 0; i < jugadores.length; i++) {
             jugadores[i] = new Thread(() -> {
                 for (int j = 0; j < 100_000; j++) {
-                    Puntos.sumar();
+                    p.sumar();                                // los cuatro usan el mismo objeto
                 }
             });
             jugadores[i].start();
@@ -200,6 +199,9 @@ public class MarcadorSync {
 ```text
 Esperado 400000, obtenido 400000
 ```
+
+!!! note "Para saber más"
+    Otra forma de arreglarlo es escribir `public static synchronized void sumar()` y llamar a `Puntos.sumar()`. Con `static`, el vigilante es de la clase y no de cada objeto, así que hay uno solo aunque se creen varios objetos.
 
 ## A1 · Los tickets de la cola
 
