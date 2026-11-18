@@ -2248,13 +2248,13 @@
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>Plazas libres al final: -2
 </code></pre></div>
 <p>Aparcan los cinco y quedan <strong>−2 plazas</strong>. Es un <strong>comprobar y actuar</strong>: todos ven que hay plazas libres antes de que ninguno reste.</p>
-<p><strong>La solución:</strong> añadir la palabra <code>synchronized</code> al método <code>entrar</code>. El resto del código no cambia:</p>
+<p><strong>La solución:</strong> añadir la palabra <code>synchronized</code> al método <code>entrar</code>. El resto del código no cambia.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">static</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">coche</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="c1">// el mismo cuerpo que antes</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
 </code></pre></div>
-<p><code>synchronized</code> funciona como <strong>la única llave de la barrera del aparcamiento</strong>. Para entrar en el método, un coche tiene que coger la llave; al salir, la devuelve. Mientras un coche tiene la llave, los demás esperan en la cola.</p>
-<p>Para que funcione, todos los coches tienen que pelearse por <strong>la misma llave</strong>. Aquí es así porque <code>entrar</code> es <code>static</code>: pertenece a la clase <code>Aparcamiento</code>, no a ningún objeto, y Java usa la propia clase como llave. Como solo hay una clase <code>Aparcamiento</code>, solo hay una llave para los cinco coches.</p>
+<p><code>synchronized</code> hace que <strong>solo un coche pueda estar dentro de <code>entrar</code> a la vez</strong>. Es como una barrera con un vigilante: deja pasar a un coche, espera a que aparque y solo entonces deja pasar al siguiente. Los demás esperan en la cola.</p>
+<p>Así, cuando un coche mira si quedan plazas, ningún otro puede quitársela antes de que aparque.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Coche-1 aparca. Quedan 2
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Coche-5 aparca. Quedan 1
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Coche-4 aparca. Quedan 0
@@ -2431,9 +2431,15 @@
 </code></pre></div>
 <ol>
 <li>Ejecútalo varias veces y comprueba que no sale 400.000.</li>
-<li>Explica por qué <code>synchronized</code> no está protegiendo nada. Pista: ¿cuál es el cerrojo de <code>sumar()</code>? ¿Cuántos objetos <code>Puntos</code> hay?</li>
-<li>Arréglalo de <strong>dos formas distintas</strong> y comprueba que las dos funcionan.</li>
+<li>Explica por qué <code>synchronized</code> no está protegiendo nada.</li>
+<li>Arréglalo y comprueba que sale siempre 400.000.</li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Recomendación</p>
+<p>Fíjate en la línea <code>Puntos p = new Puntos();</code>: está <strong>dentro</strong> del hilo, así que cada jugador crea su propio objeto. Hay cuatro objetos <code>Puntos</code>.</p>
+<p>Cada objeto tiene <strong>su propio vigilante</strong>. Con cuatro objetos hay cuatro vigilantes, y cada uno deja pasar a su jugador sin mirar a los demás. Pero los cuatro suman en el mismo marcador, así que vuelven a pisarse.</p>
+<p>Para arreglarlo, crea <strong>un solo objeto <code>Puntos</code> antes del bucle</strong> y haz que los cuatro jugadores lo usen. Así solo hay un vigilante para todos.</p>
+</div>
 <h3 id="a1-clases-atomicas-los-tickets-de-la-cola">A1 · Clases atómicas: los tickets de la cola<a class="headerlink" href="#a1-clases-atomicas-los-tickets-de-la-cola" title="Permanent link">&para;</a></h3>
 <p>Cinco taquillas reparten números de turno a la vez. Cada número debe darse <strong>una sola vez</strong>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
