@@ -1,6 +1,6 @@
 # Planificación · 1.ª evaluación
 
-Clase los **miércoles, 3 horas**. La 1.ª evaluación termina el 4 de diciembre de 2026.
+Clase los **miércoles, 3 horas**. La prueba de la 1.ª evaluación es el **9 de diciembre de 2026**.
 
 | Fecha | Tema | Contenido |
 |---|---|---|
@@ -17,16 +17,16 @@ Clase los **miércoles, 3 horas**. La 1.ª evaluación termina el 4 de diciembre
 | 21 oct | Tema 1 | Repaso, boletín de ejercicios y prueba corta del tema. |
 <!-- fin -->
 | 28 oct | Tema 2 | Hilos: proceso frente a hilo, `Thread` y `Runnable`, estados, `start`, `join`, `sleep` e `interrupt`, hilos demonio. |
-| 4 nov | Tema 2 | Práctica guiada: gestor de descargas. Condición de carrera, sección crítica, `synchronized` y clases atómicas. |
-| 11 nov | Tema 2 | `Lock`, `wait` y `notify`, productor-consumidor, semáforos, interbloqueo e inanición, ejecutores e hilos virtuales. |
+| 4 y 11 nov | Tema 2 | Práctica guiada: gestor de descargas. Condición de carrera, sección crítica, `synchronized` y clases atómicas. |
+| 18 nov | Tema 2 | [Taller práctico](temas/tema-2/taller.md): condición de carrera, `synchronized` y clases atómicas. |
+| 25 nov | Tema 2 | `Lock`, productor-consumidor (`wait`/`notify` y `BlockingQueue`) e interbloqueo. Ejecutores e hilos virtuales. |
 <!-- si-visible: temas/tema-2/practica.md -->
-| 18 nov | Temas 2 y 3 | Práctica evaluable del Tema 2 en clase. Redes: TCP y UDP, puertos. |
+| 2 dic | Tema 2 | Práctica evaluable del Tema 2 en clase (2 h) y repaso para la prueba (1 h). |
 <!-- fin -->
 <!-- si-oculto: temas/tema-2/practica.md -->
-| 18 nov | Temas 2 y 3 | Trabajo en clase del Tema 2. Redes: TCP y UDP, puertos. |
+| 2 dic | Tema 2 | Trabajo en clase del Tema 2 (2 h) y repaso para la prueba (1 h). |
 <!-- fin -->
-| 25 nov | Tema 3 | Sockets cliente-servidor en Java, servidor multihilo y UDP. |
-| 2 dic | — | Prueba de la 1.ª evaluación. |
+| 9 dic | — | Prueba de la 1.ª evaluación: Temas 1 y 2. |
 
 !!! note
-    La parte de servicios REST del Tema 3 y el cliente HTTP de Java se trabajan al comienzo de la 2.ª evaluación.
+    El Tema 3 completo (redes, sockets, servidor multihilo, UDP, servicios REST y cliente HTTP) y los semáforos se trabajan al comienzo de la 2.ª evaluación.

@@ -27,6 +27,7 @@ En el Tema 1 aprendiste a lanzar **procesos**: programas completos, cada uno con
 | [6. Condición de carrera](06-condicion-carrera.md) | Por qué falla un programa cuando dos hilos escriben en el mismo dato. |
 | [7. synchronized](07-synchronized.md) | Exclusión mutua: que solo un hilo a la vez entre en la sección crítica. |
 | [8. Clases atómicas](08-atomicas.md) | `AtomicInteger` y cuándo usar cada solución. |
+| [Taller práctico](taller.md) | Ejercicios resueltos y para hacer por tu cuenta de condición de carrera, `synchronized` y clases atómicas. |
 
 <!-- si-oculto: temas/tema-2/05-hilos-virtuales.md -->
 !!! note "Apartado 5"
