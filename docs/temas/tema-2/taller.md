@@ -198,13 +198,17 @@ Plazas libres al final: -2
 
 Aparcan los cinco y quedan **−2 plazas**. Es un **comprobar y actuar**: todos ven que hay plazas libres antes de que ninguno reste.
 
-**La solución:** añadir `synchronized` a `entrar`. Como el método y `plazasLibres` son `static`, el cerrojo es la clase, uno para todos los coches:
+**La solución:** añadir la palabra `synchronized` al método `entrar`. El resto del código no cambia:
 
 ```java
 static synchronized void entrar(String coche) {
     // el mismo cuerpo que antes
 }
 ```
+
+`synchronized` funciona como **la única llave de la barrera del aparcamiento**. Para entrar en el método, un coche tiene que coger la llave; al salir, la devuelve. Mientras un coche tiene la llave, los demás esperan en la cola.
+
+Para que funcione, todos los coches tienen que pelearse por **la misma llave**. Aquí es así porque `entrar` es `static`: pertenece a la clase `Aparcamiento`, no a ningún objeto, y Java usa la propia clase como llave. Como solo hay una clase `Aparcamiento`, solo hay una llave para los cinco coches.
 
 ```text
 Coche-1 aparca. Quedan 2
