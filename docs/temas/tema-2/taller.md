@@ -53,9 +53,6 @@ Pero si los dos leen **antes** de que ninguno escriba, gana el que escribe el ú
 Lo comprobamos repitiendo la operación 200 veces:
 
 ```java
-import java.util.Map;
-import java.util.TreeMap;
-
 public class Saldo {
     static int saldo;
 
@@ -72,7 +69,10 @@ public class Saldo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Map<Integer, Integer> resultados = new TreeMap<>();
+        int veces70 = 0;
+        int veces120 = 0;
+        int veces150 = 0;
+
         for (int prueba = 0; prueba < 200; prueba++) {
             saldo = 100;
             Thread a = new Thread(() -> operar(+50));   // ingreso
@@ -81,15 +81,27 @@ public class Saldo {
             b.start();
             a.join();
             b.join();
-            resultados.merge(saldo, 1, Integer::sum);
+
+            if (saldo == 70) {
+                veces70++;
+            } else if (saldo == 120) {
+                veces120++;
+            } else if (saldo == 150) {
+                veces150++;
+            }
         }
-        System.out.println("Saldo final → veces: " + resultados);
+
+        System.out.println("Saldo 120 (correcto): " + veces120 + " veces");
+        System.out.println("Saldo 150 (se pierde el pago): " + veces150 + " veces");
+        System.out.println("Saldo 70 (se pierde el ingreso): " + veces70 + " veces");
     }
 }
 ```
 
 ```text
-Saldo final → veces: {70=167, 120=1, 150=32}
+Saldo 120 (correcto): 1 veces
+Saldo 150 (se pierde el pago): 33 veces
+Saldo 70 (se pierde el ingreso): 166 veces
 ```
 
 !!! note "¿Por qué casi nunca sale 120?"
