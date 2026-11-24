@@ -1660,6 +1660,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="9.3 tryLock(): no esperar si está ocupado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esperar-como-mucho-un-tiempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esperar como mucho un tiempo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1841,6 +1858,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="9.3 tryLock(): no esperar si está ocupado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esperar-como-mucho-un-tiempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esperar como mucho un tiempo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2010,45 +2044,90 @@
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Entradas al final: 1
 </code></pre></div>
 <p>El primero que llega coge el cerrojo y tarda 200 ms en comprar. Los otros tres prueban con <code>tryLock()</code>, ven que está ocupado y se van sin esperar. Quién llega primero cambia en cada ejecución.</p>
+<h3 id="esperar-como-mucho-un-tiempo">Esperar como mucho un tiempo<a class="headerlink" href="#esperar-como-mucho-un-tiempo" title="Permanent link">&para;</a></h3>
+<p><code>tryLock</code> también admite un tiempo máximo de espera. Aquí un hilo tiene el cerrojo 3 segundos y el <code>main</code> solo está dispuesto a esperar 2:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Espera</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ReentrantLock</span><span class="w"> </span><span class="n">cerrojo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReentrantLock</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">   </span><span class="c1">// true: respeta el orden de llegada</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">Thread</span><span class="w"> </span><span class="n">ocupa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">            </span><span class="n">cerrojo</span><span class="p">.</span><span class="na">lock</span><span class="p">();</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span><span class="w">                 </span><span class="c1">// tiene el cerrojo 3 segundos</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">                </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">                </span><span class="n">cerrojo</span><span class="p">.</span><span class="na">unlock</span><span class="p">();</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="p">});</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="n">ocupa</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cerrojo</span><span class="p">.</span><span class="na">tryLock</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// espera como mucho 2 segundos</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Conseguido"</span><span class="p">);</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">                </span><span class="n">cerrojo</span><span class="p">.</span><span class="na">unlock</span><span class="p">();</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Ocupado más de 2 segundos: inténtalo más tarde"</span><span class="p">);</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="n">ocupa</span><span class="p">.</span><span class="na">join</span><span class="p">();</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Ocupado más de 2 segundos: inténtalo más tarde
+</code></pre></div>
+<p><code>tryLock(2, TimeUnit.SECONDS)</code> espera hasta 2 segundos: si en ese tiempo consigue el cerrojo, devuelve <code>true</code>; si no, devuelve <code>false</code>. Como puede esperar, lanza <code>InterruptedException</code>, igual que <code>sleep</code>.</p>
+<p>El <code>true</code> de <code>new ReentrantLock(true)</code> hace que el cerrojo respete el <strong>orden de llegada</strong>: cuando se suelta, se lo da al hilo que lleva más tiempo esperando. Así ningún hilo se queda siempre sin turno, que es la <strong>inanición</strong> que verás en el <a href="../11-interbloqueo/#114-inanicion">apartado 11</a>. Por defecto no se respeta el orden, porque así va algo más rápido.</p>
 <h2 id="94-synchronized-o-lock">9.4 ¿<code>synchronized</code> o <code>Lock</code>?<a class="headerlink" href="#94-synchronized-o-lock" title="Permanent link">&para;</a></h2>
+<p>Para todo lo que hemos hecho hasta ahora (el contador, el cajero, el aparcamiento, la hucha), <strong><code>synchronized</code> es mejor</strong>: hace lo mismo, es más corto y no se te puede olvidar soltar el cerrojo.</p>
+<p><code>Lock</code> solo merece la pena cuando necesitas algo que <code>synchronized</code> no sabe hacer. Con <code>synchronized</code>, si el cerrojo está ocupado, el hilo <strong>espera sin límite</strong> y no puede rendirse.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th><code>synchronized</code></th>
-<th><code>ReentrantLock</code></th>
+<th>Necesitas…</th>
+<th>Con <code>Lock</code></th>
+<th>Ejemplo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Coger y soltar</td>
-<td>Automático</td>
-<td>A mano: <code>lock()</code> y <code>unlock()</code> en un <code>finally</code></td>
-</tr>
-<tr>
-<td>Si salta una excepción</td>
-<td>Se suelta solo</td>
-<td>Se suelta si está en el <code>finally</code></td>
-</tr>
-<tr>
-<td>Probar sin esperar</td>
-<td>No se puede</td>
+<td>No esperar si está ocupado</td>
 <td><code>tryLock()</code></td>
+<td>La taquilla: si está ocupada, el cliente se va</td>
 </tr>
 <tr>
-<td>Cuándo usarlo</td>
-<td>Casi siempre: es más corto y no se te puede olvidar soltarlo</td>
-<td>Cuando necesitas <code>tryLock()</code> u otras opciones avanzadas</td>
+<td>Esperar como mucho un tiempo</td>
+<td><code>tryLock(2, TimeUnit.SECONDS)</code></td>
+<td>Un servidor que, si no consigue un recurso, responde «inténtalo más tarde» en vez de quedarse colgado</td>
+</tr>
+<tr>
+<td>Respetar el orden de llegada</td>
+<td><code>new ReentrantLock(true)</code></td>
+<td>Que ningún hilo se quede siempre sin turno</td>
+</tr>
+<tr>
+<td>Escapar de un interbloqueo</td>
+<td><code>tryLock()</code> sobre el segundo cerrojo</td>
+<td>Si no consigo el segundo cerrojo, suelto el primero y lo vuelvo a intentar</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Regla</p>
+<p>Si con <code>synchronized</code> te vale, usa <code>synchronized</code>. Usa <code>Lock</code> cuando necesites <strong>no esperar</strong>, <strong>esperar con un límite</strong> o <strong>respetar el orden de llegada</strong>.</p>
+</div>
 <h2 id="preguntas-de-repaso">Preguntas de repaso<a class="headerlink" href="#preguntas-de-repaso" title="Permanent link">&para;</a></h2>
 <ol>
 <li>¿Qué diferencia hay entre <code>lock()</code> y <code>tryLock()</code>?</li>
 <li>¿Por qué el <code>unlock()</code> va siempre en un <code>finally</code>?</li>
 <li>¿Qué pasa si un hilo hace <code>lock()</code> y nunca hace <code>unlock()</code>?</li>
 <li>En la taquilla, ¿por qué quedan entradas sin vender aunque hay cuatro clientes?</li>
-<li>Si <code>synchronized</code> hace lo mismo, ¿cuándo usarías un <code>ReentrantLock</code>?</li>
+<li>Si <code>synchronized</code> hace lo mismo y es más seguro, ¿cuándo usarías un <code>ReentrantLock</code>? Pon un ejemplo.</li>
+<li>¿Qué hace el <code>true</code> de <code>new ReentrantLock(true)</code>? ¿Con qué problema del apartado 11 tiene que ver?</li>
 </ol>
 
 
