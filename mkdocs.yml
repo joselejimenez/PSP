@@ -38,7 +38,7 @@ extra:
     - temas/tema-1/practica.md     # Práctica evaluable del Tema 1
     - temas/tema-2/05-hilos-virtuales.md   # Tema 2, apartado 5: se publica el 11 nov
     - temas/tema-2/practica.md     # Práctica evaluable del Tema 2
-    - temas/tema-2/taller-soluciones.md   # Soluciones del taller: publicar después de la clase
+    - temas/tema-2/taller-2-soluciones.md # Soluciones del taller 2: publicar después de la clase
     - temas/tema-3                 # Tema 3 completo
 
 extra_css:
@@ -105,6 +105,11 @@ nav:
       - "Boletín: soluciones": temas/tema-2/boletin-soluciones.md
       - "Taller práctico": temas/tema-2/taller.md
       - "Taller práctico: soluciones": temas/tema-2/taller-soluciones.md
+      - 9. Lock: temas/tema-2/09-lock.md
+      - 10. Productor-consumidor: temas/tema-2/10-productor-consumidor.md
+      - 11. Interbloqueo: temas/tema-2/11-interbloqueo.md
+      - "Taller 2": temas/tema-2/taller-2.md
+      - "Taller 2: soluciones": temas/tema-2/taller-2-soluciones.md
       - Práctica evaluable: temas/tema-2/practica.md
   - Tema 3. Comunicaciones en red:
       - Contenidos: temas/tema-3/index.md

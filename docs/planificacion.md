@@ -20,7 +20,7 @@ Clase los **miércoles, 3 horas**. La prueba de la 1.ª evaluación es el **9 de
 | 4 nov | Tema 2 | Práctica guiada: gestor de descargas. Condición de carrera, sección crítica, `synchronized` y clases atómicas. |
 | 11 nov | — | Sin clase (huelga). |
 | 18 nov | Tema 2 | [Taller práctico](temas/tema-2/taller.md): condición de carrera, `synchronized` y clases atómicas. |
-| 25 nov | Tema 2 | `Lock`, productor-consumidor (`wait`/`notify` y `BlockingQueue`) e interbloqueo. Ejecutores e hilos virtuales. |
+| 25 nov | Tema 2 | `Lock`, productor-consumidor con `BlockingQueue` e interbloqueo ([taller 2](temas/tema-2/taller-2.md)). Ejecutores e hilos virtuales. |
 <!-- si-visible: temas/tema-2/practica.md -->
 | 2 dic | Tema 2 | Práctica evaluable del Tema 2 en clase (2 h) y repaso para la prueba (1 h). |
 <!-- fin -->
