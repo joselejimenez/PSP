@@ -123,3 +123,272 @@ Si hay **varios consumidores**, el productor tiene que meter **un aviso de fin p
 3. ¿Qué diferencia hay entre `ArrayBlockingQueue` y `LinkedBlockingQueue`?
 4. En la panadería, ¿por qué a partir del cuarto pan el panadero va al ritmo del cliente?
 5. Hay un productor y tres consumidores. ¿Cuántos avisos de `"FIN"` tiene que meter el productor? ¿Por qué?
+
+## Ejercicio autoguiado: la impresora compartida
+
+En una oficina, los empleados mandan documentos a una impresora. La impresora tiene una **bandeja de entrada donde solo caben 2 documentos**. Si está llena, quien envía espera; si está vacía, la impresora espera. Es exactamente un productor-consumidor.
+
+### Paso 1 · Un empleado y una impresora
+
+Escribe `ImpresoraPaso1` con:
+
+- una `BlockingQueue<String> cola = new ArrayBlockingQueue<>(2);`
+- un hilo **empleado** (productor) que haga `put` de 3 documentos: `"Ana-doc1"`, `"Ana-doc2"`, `"Ana-doc3"`, e imprima «Ana envía …».
+- un hilo **impresora** (consumidor) que haga `take` 3 veces, imprima «Imprimiendo …» y tarde 500 ms en cada uno.
+- el `main` arranca los dos, espera con `join()` e imprime «Impresión terminada».
+
+Salida aproximada (el orden de las primeras líneas cambia):
+
+```text
+Ana envía Ana-doc1
+Ana envía Ana-doc2
+    Imprimiendo Ana-doc1
+Ana envía Ana-doc3
+    Imprimiendo Ana-doc2
+    Imprimiendo Ana-doc3
+Impresión terminada
+```
+
+**Piensa:** ¿por qué Ana no puede enviar el tercer documento hasta que se imprime el primero?
+
+??? success "Solución del paso 1"
+    ```java
+    import java.util.concurrent.ArrayBlockingQueue;
+    import java.util.concurrent.BlockingQueue;
+
+    public class ImpresoraPaso1 {
+        public static void main(String[] args) throws InterruptedException {
+            BlockingQueue<String> cola = new ArrayBlockingQueue<>(2);   // caben 2 documentos
+
+            Thread empleado = new Thread(() -> {
+                try {
+                    for (int i = 1; i <= 3; i++) {
+                        String doc = "Ana-doc" + i;
+                        cola.put(doc);
+                        System.out.println("Ana envía " + doc);
+                    }
+                } catch (InterruptedException e) {
+                    return;
+                }
+            });
+
+            Thread impresora = new Thread(() -> {
+                try {
+                    for (int i = 1; i <= 3; i++) {
+                        String doc = cola.take();
+                        System.out.println("    Imprimiendo " + doc);
+                        Thread.sleep(500);                  // imprimir es lento
+                    }
+                } catch (InterruptedException e) {
+                    return;
+                }
+            });
+
+            empleado.start();
+            impresora.start();
+            empleado.join();
+            impresora.join();
+            System.out.println("Impresión terminada");
+        }
+    }
+    ```
+
+### Paso 2 · Tres empleados
+
+Copia la clase como `ImpresoraPaso2`. Ahora hay tres empleados, `Ana`, `Luis` y `Marta`, y cada uno envía 3 documentos (`"Luis-doc1"`…). Crea los hilos con un bucle sobre un array de nombres.
+
+¿Cuántas veces tiene que hacer `take` la impresora ahora?
+
+Salida aproximada: se mezclan los envíos de los tres y salen 9 líneas «Imprimiendo», y al final «Impresión terminada».
+
+??? success "Solución del paso 2"
+    ```java
+    import java.util.concurrent.ArrayBlockingQueue;
+    import java.util.concurrent.BlockingQueue;
+
+    public class ImpresoraPaso2 {
+        public static void main(String[] args) throws InterruptedException {
+            BlockingQueue<String> cola = new ArrayBlockingQueue<>(2);
+            String[] nombres = {"Ana", "Luis", "Marta"};
+
+            Thread[] empleados = new Thread[nombres.length];
+            for (int e = 0; e < nombres.length; e++) {
+                String nombre = nombres[e];
+                empleados[e] = new Thread(() -> {
+                    try {
+                        for (int i = 1; i <= 3; i++) {
+                            String doc = nombre + "-doc" + i;
+                            cola.put(doc);
+                            System.out.println(nombre + " envía " + doc);
+                        }
+                    } catch (InterruptedException ex) {
+                        return;
+                    }
+                });
+            }
+
+            Thread impresora = new Thread(() -> {
+                try {
+                    for (int i = 1; i <= 9; i++) {           // 3 empleados x 3 documentos
+                        String doc = cola.take();
+                        System.out.println("    Imprimiendo " + doc);
+                        Thread.sleep(500);
+                    }
+                } catch (InterruptedException e) {
+                    return;
+                }
+            });
+
+            for (Thread t : empleados) t.start();
+            impresora.start();
+            for (Thread t : empleados) t.join();
+            impresora.join();
+            System.out.println("Impresión terminada");
+        }
+    }
+    ```
+
+    La impresora hace 9 `take`: 3 empleados × 3 documentos. Fíjate en el problema: la impresora tiene que **saber de antemano** cuántos documentos van a llegar. En el paso 3 lo arreglamos.
+
+### Paso 3 · El aviso de fin
+
+Copia la clase como `ImpresoraPaso3`. La impresora ya no cuenta: hace `take` en un `while (true)` y, cuando recibe `"FIN"`, sale del bucle e imprime cuántos documentos ha impreso.
+
+¿Quién manda el `"FIN"`? No puede ser un empleado (no sabe si los otros han terminado). Lo manda el **`main`**, después de hacer `join()` de los tres empleados.
+
+Final de la salida:
+
+```text
+    La impresora se apaga tras 9 documentos
+Impresión terminada
+```
+
+??? success "Solución del paso 3"
+    ```java
+    import java.util.concurrent.ArrayBlockingQueue;
+    import java.util.concurrent.BlockingQueue;
+
+    public class ImpresoraPaso3 {
+        public static void main(String[] args) throws InterruptedException {
+            BlockingQueue<String> cola = new ArrayBlockingQueue<>(2);
+            String[] nombres = {"Ana", "Luis", "Marta"};
+
+            Thread[] empleados = new Thread[nombres.length];
+            for (int e = 0; e < nombres.length; e++) {
+                String nombre = nombres[e];
+                empleados[e] = new Thread(() -> {
+                    try {
+                        for (int i = 1; i <= 3; i++) {
+                            String doc = nombre + "-doc" + i;
+                            cola.put(doc);
+                            System.out.println(nombre + " envía " + doc);
+                        }
+                    } catch (InterruptedException ex) {
+                        return;
+                    }
+                });
+            }
+
+            Thread impresora = new Thread(() -> {
+                int impresos = 0;
+                try {
+                    while (true) {
+                        String doc = cola.take();
+                        if (doc.equals("FIN")) {
+                            break;                          // ya no llegan más documentos
+                        }
+                        System.out.println("    Imprimiendo " + doc);
+                        Thread.sleep(500);
+                        impresos++;
+                    }
+                } catch (InterruptedException e) {
+                    return;
+                }
+                System.out.println("    La impresora se apaga tras " + impresos + " documentos");
+            });
+
+            for (Thread t : empleados) t.start();
+            impresora.start();
+            for (Thread t : empleados) t.join();            // cuando han enviado todo...
+            cola.put("FIN");                                // ...el main manda el aviso de fin
+            impresora.join();
+            System.out.println("Impresión terminada");
+        }
+    }
+    ```
+
+### Paso 4 · Dos impresoras
+
+Copia la clase como `ImpresoraPaso4`. Ahora hay **dos impresoras** que leen de la misma cola. Escribe el código de la impresora en un `Runnable` y crea dos hilos con nombre: `new Thread(imprimir, "Impresora-1")`. Dentro, el nombre se obtiene con `Thread.currentThread().getName()`.
+
+**Piensa antes de ejecutar:** ¿cuántos `"FIN"` tiene que mandar el `main`? ¿Qué pasa si solo manda uno?
+
+Final de la salida (los números cambian, pero suman 9):
+
+```text
+    Impresora-2 se apaga tras 4 documentos
+    Impresora-1 se apaga tras 5 documentos
+Impresión terminada
+```
+
+??? success "Solución del paso 4"
+    ```java
+    import java.util.concurrent.ArrayBlockingQueue;
+    import java.util.concurrent.BlockingQueue;
+
+    public class ImpresoraPaso4 {
+        public static void main(String[] args) throws InterruptedException {
+            BlockingQueue<String> cola = new ArrayBlockingQueue<>(2);
+            String[] nombres = {"Ana", "Luis", "Marta"};
+
+            Thread[] empleados = new Thread[nombres.length];
+            for (int e = 0; e < nombres.length; e++) {
+                String nombre = nombres[e];
+                empleados[e] = new Thread(() -> {
+                    try {
+                        for (int i = 1; i <= 3; i++) {
+                            String doc = nombre + "-doc" + i;
+                            cola.put(doc);
+                            System.out.println(nombre + " envía " + doc);
+                        }
+                    } catch (InterruptedException ex) {
+                        return;
+                    }
+                });
+            }
+
+            Runnable imprimir = () -> {
+                String yo = Thread.currentThread().getName();
+                int impresos = 0;
+                try {
+                    while (true) {
+                        String doc = cola.take();
+                        if (doc.equals("FIN")) {
+                            break;                          // ya no llegan más documentos
+                        }
+                        System.out.println("    " + yo + " imprime " + doc);
+                        Thread.sleep(500);
+                        impresos++;
+                    }
+                } catch (InterruptedException e) {
+                    return;
+                }
+                System.out.println("    " + yo + " se apaga tras " + impresos + " documentos");
+            };
+            Thread impresora1 = new Thread(imprimir, "Impresora-1");
+            Thread impresora2 = new Thread(imprimir, "Impresora-2");
+
+            for (Thread t : empleados) t.start();
+            impresora1.start();
+            impresora2.start();
+            for (Thread t : empleados) t.join();
+            cola.put("FIN");                                // un aviso de fin por cada impresora
+            cola.put("FIN");
+            impresora1.join();
+            impresora2.join();
+            System.out.println("Impresión terminada");
+        }
+    }
+    ```
+
+    Hay que mandar **un `"FIN"` por cada consumidor**. Cada impresora se lleva uno y se apaga. Si solo mandas uno, la otra impresora se queda esperando en `take()` para siempre y el programa no termina.

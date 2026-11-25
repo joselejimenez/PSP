@@ -193,3 +193,248 @@ Para todo lo que hemos hecho hasta ahora (el contador, el cajero, el aparcamient
 4. En la taquilla, ¿por qué quedan entradas sin vender aunque hay cuatro clientes?
 5. Si `synchronized` hace lo mismo y es más seguro, ¿cuándo usarías un `ReentrantLock`? Pon un ejemplo.
 6. ¿Qué hace el `true` de `new ReentrantLock(true)`? ¿Con qué problema del apartado 11 tiene que ver?
+
+## Ejercicio autoguiado: el cajero con `Lock`
+
+Vas a construir el programa en cuatro pasos. En cada paso tienes **qué hacer**, **qué debería salir** y, plegada, la **solución**. Intenta cada paso antes de abrirla.
+
+Ana y Luis comparten una cuenta con 100 €. Los dos van a la vez a un cajero y cada uno intenta sacar 80 €.
+
+### Paso 1 · Sin proteger
+
+Escribe la clase `CajeroPaso1` con:
+
+- un `static int saldo = 100;`
+- un método `static void retirar(String quien, int cantidad)` que, **si hay saldo suficiente**, espere 10 ms (el cajero cuenta los billetes), reste la cantidad e imprima el saldo. Si no hay saldo, imprime «saldo insuficiente».
+- un `main` que lance dos hilos, `retirar("Ana", 80)` y `retirar("Luis", 80)`, espere a los dos con `join()` e imprima el saldo final.
+
+Salida que verás (casi siempre):
+
+```text
+Ana retira 80. Saldo: -60
+Luis retira 80. Saldo: -60
+Saldo final: -60
+```
+
+**Piensa:** ¿por qué los dos pasan el `if`? (Los dos comprueban el saldo antes de que el otro lo reste: es una condición de carrera.)
+
+??? success "Solución del paso 1"
+    ```java
+    public class CajeroPaso1 {
+        static int saldo = 100;
+
+        static void retirar(String quien, int cantidad) {
+            if (saldo >= cantidad) {
+                pausa(10);                                   // el cajero cuenta los billetes
+                saldo -= cantidad;
+                System.out.println(quien + " retira " + cantidad + ". Saldo: " + saldo);
+            } else {
+                System.out.println(quien + ": saldo insuficiente");
+            }
+        }
+
+        static void pausa(int ms) {
+            try {
+                Thread.sleep(ms);
+            } catch (InterruptedException e) {
+                // nada
+            }
+        }
+
+        public static void main(String[] args) throws InterruptedException {
+            Thread ana = new Thread(() -> retirar("Ana", 80));
+            Thread luis = new Thread(() -> retirar("Luis", 80));
+            ana.start();
+            luis.start();
+            ana.join();
+            luis.join();
+            System.out.println("Saldo final: " + saldo);
+        }
+    }
+    ```
+
+### Paso 2 · Protegerlo con `ReentrantLock`
+
+Copia la clase como `CajeroPaso2` y protege **todo** el método `retirar` (la comprobación y la resta) con un `ReentrantLock` compartido. Recuerda el patrón: `lock()`, `try`, y `unlock()` en el `finally`.
+
+Salida esperada, siempre:
+
+```text
+Ana retira 80. Saldo: 20
+Luis: saldo insuficiente
+Saldo final: 20
+```
+
+(Puede ser Luis quien retire y Ana quien se quede sin saldo.)
+
+??? success "Solución del paso 2"
+    ```java
+    import java.util.concurrent.locks.ReentrantLock;
+
+    public class CajeroPaso2 {
+        static int saldo = 100;
+        static final ReentrantLock cerrojo = new ReentrantLock();
+
+        static void retirar(String quien, int cantidad) {
+            cerrojo.lock();
+            try {
+                if (saldo >= cantidad) {
+                    pausa(10);
+                    saldo -= cantidad;
+                    System.out.println(quien + " retira " + cantidad + ". Saldo: " + saldo);
+                } else {
+                    System.out.println(quien + ": saldo insuficiente");
+                }
+            } finally {
+                cerrojo.unlock();
+            }
+        }
+
+        static void pausa(int ms) {
+            try {
+                Thread.sleep(ms);
+            } catch (InterruptedException e) {
+                // nada
+            }
+        }
+
+        public static void main(String[] args) throws InterruptedException {
+            Thread ana = new Thread(() -> retirar("Ana", 80));
+            Thread luis = new Thread(() -> retirar("Luis", 80));
+            ana.start();
+            luis.start();
+            ana.join();
+            luis.join();
+            System.out.println("Saldo final: " + saldo);
+        }
+    }
+    ```
+
+### Paso 3 · Si el cajero está ocupado, me voy
+
+Copia la clase como `CajeroPaso3`. Cambia `lock()` por `tryLock()`: si el cajero está ocupado, el cliente imprime «cajero ocupado, vuelve más tarde» y **no espera**.
+
+Ojo: el `unlock()` solo se hace si `tryLock()` devolvió `true`.
+
+Salida esperada:
+
+```text
+Luis: cajero ocupado, vuelve más tarde
+Ana retira 80. Saldo: 20
+Saldo final: 20
+```
+
+**Piensa:** ahora el que llega segundo ni siquiera ve «saldo insuficiente». ¿Por qué?
+
+??? success "Solución del paso 3"
+    ```java
+    import java.util.concurrent.locks.ReentrantLock;
+
+    public class CajeroPaso3 {
+        static int saldo = 100;
+        static final ReentrantLock cerrojo = new ReentrantLock();
+
+        static void retirar(String quien, int cantidad) {
+            if (cerrojo.tryLock()) {                         // si está ocupado, no espero
+                try {
+                    if (saldo >= cantidad) {
+                        pausa(10);
+                        saldo -= cantidad;
+                        System.out.println(quien + " retira " + cantidad + ". Saldo: " + saldo);
+                    } else {
+                        System.out.println(quien + ": saldo insuficiente");
+                    }
+                } finally {
+                    cerrojo.unlock();
+                }
+            } else {
+                System.out.println(quien + ": cajero ocupado, vuelve más tarde");
+            }
+        }
+
+        static void pausa(int ms) {
+            try {
+                Thread.sleep(ms);
+            } catch (InterruptedException e) {
+                // nada
+            }
+        }
+
+        public static void main(String[] args) throws InterruptedException {
+            Thread ana = new Thread(() -> retirar("Ana", 80));
+            Thread luis = new Thread(() -> retirar("Luis", 80));
+            ana.start();
+            luis.start();
+            ana.join();
+            luis.join();
+            System.out.println("Saldo final: " + saldo);
+        }
+    }
+    ```
+
+### Paso 4 · Esperar como mucho 1 segundo
+
+Copia la clase como `CajeroPaso4` y usa `tryLock(1, TimeUnit.SECONDS)`. Como puede esperar, lanza `InterruptedException`: rodéalo con un `try-catch`.
+
+Salida esperada:
+
+```text
+Ana retira 80. Saldo: 20
+Luis: saldo insuficiente
+Saldo final: 20
+```
+
+**Piensa:** ¿por qué vuelve a salir lo mismo que en el paso 2? (El primero solo tarda 10 ms, mucho menos de 1 segundo, así que el segundo espera y entra.) Cambia la pausa de 10 a 1500 ms y vuelve a ejecutar: ¿qué ves ahora?
+
+??? success "Solución del paso 4"
+    ```java
+    import java.util.concurrent.TimeUnit;
+    import java.util.concurrent.locks.ReentrantLock;
+
+    public class CajeroPaso4 {
+        static int saldo = 100;
+        static final ReentrantLock cerrojo = new ReentrantLock();
+
+        static void retirar(String quien, int cantidad) {
+            try {
+                if (cerrojo.tryLock(1, TimeUnit.SECONDS)) {  // espero como mucho 1 segundo
+                    try {
+                        if (saldo >= cantidad) {
+                            pausa(10);
+                            saldo -= cantidad;
+                            System.out.println(quien + " retira " + cantidad + ". Saldo: " + saldo);
+                        } else {
+                            System.out.println(quien + ": saldo insuficiente");
+                        }
+                    } finally {
+                        cerrojo.unlock();
+                    }
+                } else {
+                    System.out.println(quien + ": cajero ocupado más de 1 segundo, vuelve más tarde");
+                }
+            } catch (InterruptedException e) {
+                System.out.println(quien + ": interrumpido mientras esperaba");
+            }
+        }
+
+        static void pausa(int ms) {
+            try {
+                Thread.sleep(ms);
+            } catch (InterruptedException e) {
+                // nada
+            }
+        }
+
+        public static void main(String[] args) throws InterruptedException {
+            Thread ana = new Thread(() -> retirar("Ana", 80));
+            Thread luis = new Thread(() -> retirar("Luis", 80));
+            ana.start();
+            luis.start();
+            ana.join();
+            luis.join();
+            System.out.println("Saldo final: " + saldo);
+        }
+    }
+    ```
+
+    Con una pausa de 1500 ms, el segundo cliente espera 1 segundo, no consigue el cerrojo e imprime «cajero ocupado más de 1 segundo, vuelve más tarde».

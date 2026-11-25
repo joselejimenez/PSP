@@ -28,10 +28,11 @@ En el Tema 1 aprendiste a lanzar **procesos**: programas completos, cada uno con
 | [7. synchronized](07-synchronized.md) | Exclusión mutua: que solo un hilo a la vez entre en la sección crítica. |
 | [8. Clases atómicas](08-atomicas.md) | `AtomicInteger` y cuándo usar cada solución. |
 | [Taller práctico](taller.md) | Ejercicios resueltos y para hacer por tu cuenta de condición de carrera, `synchronized` y clases atómicas. |
-| [9. Lock](09-lock.md) | `ReentrantLock`: un cerrojo que se coge y se suelta a mano, y `tryLock()`. |
-| [10. Productor-consumidor](10-productor-consumidor.md) | Un hilo produce y otro consume, con una cola bloqueante. |
-| [11. Interbloqueo](11-interbloqueo.md) | Hilos que se esperan para siempre, cómo evitarlo, e inanición. |
+| [9. Lock](09-lock.md) | `ReentrantLock`: un cerrojo que se coge y se suelta a mano, y `tryLock()`. Con ejercicio autoguiado. |
+| [10. Productor-consumidor](10-productor-consumidor.md) | Un hilo produce y otro consume, con una cola bloqueante. Con ejercicio autoguiado. |
+| [11. Interbloqueo](11-interbloqueo.md) | Hilos que se esperan para siempre, cómo evitarlo, e inanición. Con ejercicio autoguiado. |
 | [Taller 2](taller-2.md) | Ejercicios de `Lock`, productor-consumidor e interbloqueo. |
+| [Boletín 2](boletin-2.md) | Nueve ejercicios más: tres de cada bloque, uno sencillo y dos más completos. |
 
 <!-- si-oculto: temas/tema-2/05-hilos-virtuales.md -->
 !!! note "Apartado 5"

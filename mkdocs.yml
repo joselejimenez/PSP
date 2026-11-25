@@ -39,6 +39,7 @@ extra:
     - temas/tema-2/05-hilos-virtuales.md   # Tema 2, apartado 5: se publica el 11 nov
     - temas/tema-2/practica.md     # Práctica evaluable del Tema 2
     - temas/tema-2/taller-2-soluciones.md # Soluciones del taller 2: publicar después de la clase
+    - temas/tema-2/boletin-2-soluciones.md # Soluciones del boletín 2: publicar después de corregirlo
     - temas/tema-3                 # Tema 3 completo
 
 extra_css:
@@ -110,6 +111,8 @@ nav:
       - 11. Interbloqueo: temas/tema-2/11-interbloqueo.md
       - "Taller 2": temas/tema-2/taller-2.md
       - "Taller 2: soluciones": temas/tema-2/taller-2-soluciones.md
+      - "Boletín 2": temas/tema-2/boletin-2.md
+      - "Boletín 2: soluciones": temas/tema-2/boletin-2-soluciones.md
       - Práctica evaluable: temas/tema-2/practica.md
   - Tema 3. Comunicaciones en red:
       - Contenidos: temas/tema-3/index.md
